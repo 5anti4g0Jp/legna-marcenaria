@@ -45,6 +45,22 @@ export interface Piece {
   adjustable?: boolean;
   /** Referência de onde a peça foi lida (ex.: "p.3 vista frontal"). */
   source?: string;
+  /** pdf = dimensão lida do projeto; regra = derivada por regra construtiva (confirmar). */
+  origin?: "pdf" | "regra";
+  /** Módulo/móvel de origem e suas dimensões externas (L×A×P) para conferência. */
+  module?: string;
+  moduleDims?: { W: number; H: number; D: number };
+}
+
+/** Itens que não saem das chapas de MDF (vidro, espelho, LED, pés, palhinha...). */
+export interface ExtraItem {
+  id: string;
+  name: string;
+  qty: number;
+  unit: string;
+  unitPrice: number;
+  /** pdf = quantidade lida do projeto; regra = calculada/assumida. */
+  origin: "pdf" | "regra";
 }
 
 export interface HardwareItem {
@@ -88,8 +104,12 @@ export interface Project {
   /** Ferragens explicitamente listadas no projeto. */
   hardware: HardwareItem[];
   priceBook?: PriceBook;
+  derivedHardware?: boolean;
+  extras?: ExtraItem[];
   /** Pontos que a extração não conseguiu ler e aguardam confirmação. */
   pendingQuestions?: string[];
+  /** Perguntas de confirmação geradas por premissas assumidas (não bloqueiam; listadas no relatório). */
+  assumptions?: string[];
 }
 
 export type IssueSeverity = "blocking" | "warning";
@@ -123,6 +143,7 @@ export interface Budget {
   materials: number;
   edgeBand: number;
   hardware: number;
+  thirdParty: number;
   labor: number;
   extras: number;
   overhead: number;
@@ -137,5 +158,6 @@ export interface Report {
   plans: MaterialPlan[];
   edgeBandMeters: Record<string, { net: number; purchased: number }>;
   hardware: HardwareItem[];
+  extras?: ExtraItem[];
   budget?: Budget;
 }

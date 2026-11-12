@@ -25,14 +25,18 @@ export function computeBudget(p: Project, r: Omit<Report, "budget">, cost: CostC
   const materials = r.plans.reduce((a, pl) => a + pl.sheets.length * (matPrice.get(pl.materialId) ?? 0), 0);
   const edgeBand = Object.entries(r.edgeBandMeters).reduce((a, [id, m]) => a + m.purchased * (bandPrice.get(id) ?? 0), 0);
   const hardware = r.hardware.reduce((a, h) => a + h.qty * h.unitPrice, 0);
-  const netSqm = r.plans.reduce((a, pl) => a + pl.netArea, 0) / 1e6;
+  const thirdParty = (p.extras ?? []).reduce((a, e) => a + e.qty * e.unitPrice, 0);
+  // Mão de obra incide sobre a área líquida de peças de corpo (>= 10 mm); fundos finos não entram.
+  const thick = new Map(p.materials.map((m) => [m.id, m.thickness]));
+  const netSqm = r.plans.filter((pl) => (thick.get(pl.materialId) ?? 15) >= 10).reduce((a, pl) => a + pl.netArea, 0) / 1e6;
   const labor = netSqm * cost.laborPerSqm;
-  const direct = materials + edgeBand + hardware + labor + cost.extraCosts;
+  const direct = materials + edgeBand + hardware + thirdParty + labor + cost.extraCosts;
   const overhead = direct * cost.overheadPct;
   const totalCost = direct + overhead;
   const suggestedPrice = cost.marginPct < 1 ? totalCost / (1 - cost.marginPct) : NaN;
   return {
     materials: round2(materials), edgeBand: round2(edgeBand), hardware: round2(hardware),
+    thirdParty: round2(thirdParty),
     labor: round2(labor), extras: round2(cost.extraCosts), overhead: round2(overhead),
     totalCost: round2(totalCost), margin: round2(suggestedPrice - totalCost), suggestedPrice: round2(suggestedPrice),
   };
@@ -51,7 +55,7 @@ export function run(p: Project, cost: CostConfig, cutting: CuttingConfig = DEFAU
     .map((m) => ({ m, pcs: p.pieces.filter((x) => x.materialId === m.id) }))
     .filter((x) => x.pcs.length > 0)
     .map((x) => nestMaterial(x.m, x.pcs, cutting));
-  const hw = resolveHardware(p);
+  const hw = p.derivedHardware ? [...p.hardware] : resolveHardware(p);
   for (const h of hw.filter((h) => h.derived))
     issues.push({ severity: "warning", message: `Ferragem derivada por regra (confirmar): ${h.qty}x ${h.name}.` });
 

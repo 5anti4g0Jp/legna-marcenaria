@@ -1,0 +1,45 @@
+{
+  "_aviso": "PREÇOS DE REFERÊNCIA (status 'referencia'): estimados pelo assistente, NÃO são da Legna nem de fornecedor. Substitua pelos valores reais e mude status para 'confirmado'.",
+  "materials": {
+    "tauari15": { "name": "MDF Tauari Guararapes 15 mm 2750x1840", "price": 380, "status": "referencia" },
+    "tauari18": { "name": "MDF Tauari Guararapes 18 mm 2750x1840", "price": 440, "status": "referencia" },
+    "tauari25": { "name": "MDF Tauari Guararapes 25 mm 2750x1840", "price": 690, "status": "referencia" },
+    "areia15":  { "name": "MDF Areia Guararapes 15 mm 2750x1840", "price": 330, "status": "referencia" },
+    "areia18":  { "name": "MDF Areia Guararapes 18 mm 2750x1840", "price": 380, "status": "referencia" },
+    "areia25":  { "name": "MDF Areia Guararapes 25 mm 2750x1840", "price": 600, "status": "referencia" },
+    "tijolo15": { "name": "MDF Tijolo Matt Guararapes 15 mm 2750x1840", "price": 400, "status": "referencia" },
+    "salvia15": { "name": "MDF Sálvia Matt Arauco 15 mm 2750x1840", "price": 420, "status": "referencia" },
+    "branco15": { "name": "MDF Branco 15 mm 2750x1840", "price": 260, "status": "referencia" },
+    "branco6":  { "name": "MDF Branco 6 mm 2750x1840 (fundos)", "price": 110, "status": "referencia" }
+  },
+  "bands": {
+    "fita-tauari": { "name": "Fita de borda Tauari", "price": 3.2, "status": "referencia" },
+    "fita-areia":  { "name": "Fita de borda Areia", "price": 3.2, "status": "referencia" },
+    "fita-tijolo": { "name": "Fita de borda Tijolo Matt", "price": 3.2, "status": "referencia" },
+    "fita-salvia": { "name": "Fita de borda Sálvia Matt", "price": 3.2, "status": "referencia" },
+    "fita-branco": { "name": "Fita de borda Branca", "price": 2.4, "status": "referencia" }
+  },
+  "hardware": {
+    "hinge":            { "name": "Dobradiça com amortecimento", "price": 14, "status": "referencia" },
+    "slide":            { "name": "Corrediça telescópica (par)", "price": 38, "status": "referencia" },
+    "handle-sinnai":    { "name": "Puxador Sinnai Il-808 25mm grafite", "price": 28, "status": "referencia" },
+    "handle-travertino":{ "name": "Puxador mármore travertino", "price": 55, "status": "referencia" },
+    "shelf-pin":        { "name": "Pino de prateleira", "price": 0.6, "status": "referencia" }
+  },
+  "extras": {
+    "vidro-canelado":   { "name": "Vidro canelado + estrutura preta fosca", "unit": "m²", "price": 750, "status": "referencia" },
+    "espelho-cristal":  { "name": "Espelho cristal", "unit": "m²", "price": 320, "status": "referencia" },
+    "estrutura-espelho":{ "name": "Estrutura de porta de espelho preta", "unit": "un", "price": 380, "status": "referencia" },
+    "sistema-correr":   { "name": "Sistema de correr (trilho + roldanas)", "unit": "jogo", "price": 480, "status": "referencia" },
+    "palhinha":         { "name": "Palhinha indiana sextavada", "unit": "m²", "price": 180, "status": "referencia" },
+    "led":              { "name": "Fita de LED + perfil 12 mm sem aba", "unit": "m", "price": 70, "status": "referencia" },
+    "spot":             { "name": "Spot de embutir marcenaria 1,5W", "unit": "un", "price": 38, "status": "referencia" },
+    "pezinho":          { "name": "Pezinho de madeira maciça", "unit": "un", "price": 45, "status": "referencia" },
+    "ripado":           { "name": "Painel ripado (ripas + base), por área", "unit": "m²", "price": 380, "status": "referencia" },
+    "cnc-oval":         { "name": "Usinagem CNC recorte oval", "unit": "un", "price": 60, "status": "referencia" },
+    "calha":            { "name": "Calha elétrica embutida", "unit": "un", "price": 120, "status": "referencia" },
+    "estofado":         { "name": "Estofado (caminha de gato)", "unit": "un", "price": 90, "status": "referencia" },
+    "puxador-madeira":  { "name": "Puxador de madeira (bolinha)", "unit": "un", "price": 25, "status": "referencia" }
+  },
+  "cost": { "laborPerSqm": 420, "extraCosts": 0, "overheadPct": 0.12, "marginPct": 0.3, "status": "referencia" }
+}
