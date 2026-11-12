@@ -1,0 +1,6 @@
+pymupdf>=2.1
+pytesseract>=0.3.13
+pillow
+numpy
+pytest
+# sistema: apt-get install tesseract-ocr tesseract-ocr-por
