@@ -74,6 +74,26 @@ describe("plano de corte", () => {
     checkLayout(mdf, pcs, plan);
   });
 
+  it("regressão: 3,38 m² de peças do balcão cabem em 1 chapa (antes gastava 2)", () => {
+    const pcs = [
+      piece({ id: "L", w: 800, h: 560, qty: 2 }), piece({ id: "B", w: 1170, h: 540 }),
+      piece({ id: "T", w: 1170, h: 100, qty: 2 }), piece({ id: "P", w: 1166, h: 520 }),
+      piece({ id: "D", w: 596, h: 710, qty: 2 }), piece({ id: "G", w: 1196, h: 140 }),
+    ];
+    const plan = nestMaterial(mdf, pcs, { kerf: 4, trim: 10, edgeWastePct: 0.1 });
+    expect(plan.sheets.length).toBe(1);
+    checkLayout(mdf, pcs, plan);
+  });
+
+  it("nunca usa mais chapas que o limite trivial (área líquida / área útil, arredondado, + folga)", () => {
+    const pcs = Array.from({ length: 40 }, (_, i) => piece({ id: `q${i}`, w: 200 + (i % 7) * 90, h: 300 + (i % 5) * 110 }));
+    const plan = nestMaterial(mdf, pcs, cut);
+    const lowerBound = Math.ceil(plan.netArea / (mdf.sheetLength * mdf.sheetWidth));
+    expect(plan.sheets.length).toBeGreaterThanOrEqual(lowerBound);
+    expect(plan.sheets.length).toBeLessThanOrEqual(lowerBound + 1);
+    checkLayout(mdf, pcs, plan);
+  });
+
   it("falha com erro claro se a peça não cabe", () => {
     expect(() => nestMaterial(mdf, [piece({ id: "x", w: 3000, h: 100 })], cut)).toThrow(/não cabe/);
   });
