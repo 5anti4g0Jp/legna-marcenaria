@@ -37,6 +37,24 @@ Subtotal de materiais (preços de referência): **R$ 35.419**; com mão de obra 
 - Cota "9" lida no PDF era "100" (soma das alturas denunciou): validação cruzada é obrigatória.
 - Apresentação de interiores (PowerPoint) **não** serve: precisa de detalhamento com elevações/cortes.
 
+## Onde paramos (2026-11-12)
+Apresentei a **estrutura de configuração proposta** e o inventário do que já existia. Nada além do WIP foi implementado; **aguardando 3 decisões**.
+
+**Estrutura proposta:** `config/` com `catalogo.json`, `fornecedores.json` (novo), `precos.json` (preço + fornecedor + data + status) e `fabricacao.json`
+(regras por peça, folgas, descontos técnicos, usinagem). Em `src/`: `config.ts` (validação), `store.ts` (cadastrar/editar com validação + CLI, novo),
+`rules.ts` (lê a config) e `ai-context.ts` (contexto de regras para a IA, novo).
+
+**Preparação para a IA (Etapa 2):** a IA recebe catálogo e regras como contexto e devolve **só o que leu do desenho** (medidas, nomes de material, nº de portas).
+Um passo determinístico casa o nome lido com um item do catálogo; sem correspondência segura vira pergunta de confirmação.
+**A IA nunca cria ids nem preços.** Os cálculos ficam só no motor.
+
+**Decisões abertas**
+- [ ] Fornecedores: um por item ou vários para cotação? (recomendo **vários**)
+- [ ] Edição por `store.ts` + CLI, sem tela?
+- [ ] Preço só atual ou com histórico? (recomendo **só o atual**)
+
+**Ao retomar:** responder as 3 decisões -> migrar `build.ts` -> fornecedores + `store.ts` + `ai-context.ts` -> testes (manter os 46 verdes) -> só então Etapa 2.
+
 ## Decisões pendentes
 - [ ] Fornecedores: um ou vários por item?
 - [ ] Edição de cadastros por `store.ts` + CLI (sem tela)?

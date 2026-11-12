@@ -28,6 +28,45 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 - OCR medido (scan simulado): 78-100% das cotas, 0-13 números falsos/página -> **OCR nunca é dado confirmado**.
 - Todos os preços e a mão de obra são de REFERÊNCIA (inventados pelo assistente, status "referencia"). Nenhum é da Legna.
 
+## ONDE PARAMOS (ponto de retomada, 2026-11-12)
+Última ação: apresentei a **estrutura de configuração proposta** e o inventário do que já existia. **Nada foi implementado além do WIP**;
+aguardando o usuário responder 3 decisões. Não avançar sem a resposta. Backend apenas, sem frontend, sem mexer em `ingest/`.
+
+### Estrutura proposta (aguardando aprovação)
+```
+config/
+  catalogo.json       materiais (MDF/MDP/outros), cores+acabamentos, chapas comerciais, fitas (largura+espessura),
+                      ferragens (dobradiça, corrediça, puxador...)
+  fornecedores.json   NOVO: fornecedor, contato, prazo
+  precos.json         preço por item + fornecedor + data + status (confirmado/referencia/pendente)
+  fabricacao.json     regras por peça: portas, gavetas, prateleiras, divisórias, fundos, folgas, descontos técnicos,
+                      usinagem, serra/refilo
+src/
+  config.ts           esquemas + validação + verificações cruzadas   (já iniciado, branch feature/config-estrutura)
+  store.ts            NOVO: cadastrar/editar/remover com validação, gravando nos JSON (e CLI simples)
+  rules.ts            expande módulos em peças lendo a config        (já iniciado)
+  ai-context.ts       NOVO: gera o contexto de regras que a IA recebe na Etapa 2
+```
+Inventário (já existia, evitar duplicar): tipos em `src/types.ts` (manter); `HINGE_RULES`/pinos em `src/hardware.ts` e
+`DEFAULT_CUTTING` em `src/engine.ts` (duplicam a config, migrar); `build.ts` tem tamanho de chapa 2750x1840, "veio = nome começa com tauari"
+e peças de gaveta digitadas à mão (migrar). Lacunas: fornecedores, folgas/descontos de porta, espessura da fita, cadastro de
+cores/acabamentos, "outros materiais" (vidro/espelho/palhinha) sem a mesma estrutura, edição validada.
+
+### Preparação para a IA (Etapa 2)
+A IA recebe o catálogo e as regras como contexto e devolve **apenas o que leu do desenho** (medidas, nomes de material, nº de portas).
+Um **passo determinístico casa o nome lido com um item do catálogo**. Sem correspondência segura -> vira pergunta de confirmação.
+**A IA nunca cria ids nem preços.** Os cálculos continuam só no motor.
+
+### Decisões em aberto (usuário ainda não respondeu)
+1. Fornecedores: um por item (simples) ou vários para comparar cotações? **Recomendação: vários.**
+2. Edição: `store.ts` com validação + CLI simples, sem tela. Pode ser assim?
+3. Preço com histórico: só o atual ou também datas anteriores? **Recomendação: só o atual por enquanto.**
+
+### Ao retomar
+1. Perguntar/confirmar as 3 decisões. 2. Migrar `projects/fernanda-sertorio/build.ts` para a config (está quebrado na branch).
+3. Criar `fornecedores.json`, `store.ts` (+CLI), `ai-context.ts`; adicionar folgas/descontos/espessura de fita à config.
+4. Testes automatizados para cadastros e cálculos; manter os 46 testes da Etapa 1 verdes. 5. Só então Etapa 2 (IA).
+
 ## Pendências / decisões abertas
 1. Aprovar estrutura de config: fornecedores (um ou vários por item), `store.ts` + CLI, preço sem histórico.
 2. Legna informar: espessura padrão do corpo, ferragens (dobradiça/corrediça), mão de obra por m², preços reais.
