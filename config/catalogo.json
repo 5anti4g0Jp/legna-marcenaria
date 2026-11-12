@@ -1,0 +1,266 @@
+{
+ "versao": 1,
+ "materiais": [
+  {
+   "id": "tauari15",
+   "nome": "MDF Tauari 15 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "amadeirado",
+   "espessura": 15,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": true,
+   "fitaId": "fita-tauari"
+  },
+  {
+   "id": "tauari18",
+   "nome": "MDF Tauari 18 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "amadeirado",
+   "espessura": 18,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": true,
+   "fitaId": "fita-tauari"
+  },
+  {
+   "id": "tauari25",
+   "nome": "MDF Tauari 25 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "amadeirado",
+   "espessura": 25,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": true,
+   "fitaId": "fita-tauari"
+  },
+  {
+   "id": "areia15",
+   "nome": "MDF Areia 15 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "matt",
+   "espessura": 15,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-areia"
+  },
+  {
+   "id": "areia18",
+   "nome": "MDF Areia 18 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "matt",
+   "espessura": 18,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-areia"
+  },
+  {
+   "id": "areia25",
+   "nome": "MDF Areia 25 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "matt",
+   "espessura": 25,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-areia"
+  },
+  {
+   "id": "tijolo15",
+   "nome": "MDF Tijolo Matt 15 mm",
+   "familia": "MDF",
+   "marca": "Guararapes",
+   "acabamento": "matt",
+   "espessura": 15,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-tijolo"
+  },
+  {
+   "id": "salvia15",
+   "nome": "MDF Sálvia Matt 15 mm",
+   "familia": "MDF",
+   "marca": "Arauco",
+   "acabamento": "matt",
+   "espessura": 15,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-salvia"
+  },
+  {
+   "id": "branco15",
+   "nome": "MDF Branco 15 mm",
+   "familia": "MDF",
+   "marca": "(não definida)",
+   "acabamento": "liso",
+   "espessura": 15,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-branco"
+  },
+  {
+   "id": "branco6",
+   "nome": "MDF Branco 6 mm",
+   "familia": "MDF",
+   "marca": "(não definida)",
+   "acabamento": "liso",
+   "espessura": 6,
+   "chapa": {
+    "comprimento": 2750,
+    "largura": 1840
+   },
+   "veio": false,
+   "fitaId": "fita-branco"
+  }
+ ],
+ "fitas": [
+  {
+   "id": "fita-tauari",
+   "nome": "Fita de borda Tauari"
+  },
+  {
+   "id": "fita-areia",
+   "nome": "Fita de borda Areia"
+  },
+  {
+   "id": "fita-tijolo",
+   "nome": "Fita de borda Tijolo Matt"
+  },
+  {
+   "id": "fita-salvia",
+   "nome": "Fita de borda Sálvia Matt"
+  },
+  {
+   "id": "fita-branco",
+   "nome": "Fita de borda Branca"
+  }
+ ],
+ "ferragens": [
+  {
+   "id": "hinge",
+   "nome": "Dobradiça com amortecimento",
+   "tipo": "dobradica",
+   "unidade": "un"
+  },
+  {
+   "id": "slide",
+   "nome": "Corrediça telescópica (par)",
+   "tipo": "corredica",
+   "unidade": "par"
+  },
+  {
+   "id": "handle-sinnai",
+   "nome": "Puxador Sinnai Il-808 25mm grafite",
+   "tipo": "puxador",
+   "unidade": "un"
+  },
+  {
+   "id": "handle-travertino",
+   "nome": "Puxador mármore travertino",
+   "tipo": "puxador",
+   "unidade": "un"
+  },
+  {
+   "id": "shelf-pin",
+   "nome": "Pino de prateleira",
+   "tipo": "pino",
+   "unidade": "un"
+  }
+ ],
+ "extras": [
+  {
+   "id": "vidro-canelado",
+   "nome": "Vidro canelado + estrutura preta fosca",
+   "unidade": "m²"
+  },
+  {
+   "id": "espelho-cristal",
+   "nome": "Espelho cristal",
+   "unidade": "m²"
+  },
+  {
+   "id": "estrutura-espelho",
+   "nome": "Estrutura de porta de espelho preta",
+   "unidade": "un"
+  },
+  {
+   "id": "sistema-correr",
+   "nome": "Sistema de correr (trilho + roldanas)",
+   "unidade": "jogo"
+  },
+  {
+   "id": "palhinha",
+   "nome": "Palhinha indiana sextavada",
+   "unidade": "m²"
+  },
+  {
+   "id": "led",
+   "nome": "Fita de LED + perfil 12 mm sem aba",
+   "unidade": "m"
+  },
+  {
+   "id": "spot",
+   "nome": "Spot de embutir marcenaria 1,5W",
+   "unidade": "un"
+  },
+  {
+   "id": "pezinho",
+   "nome": "Pezinho de madeira maciça",
+   "unidade": "un"
+  },
+  {
+   "id": "ripado",
+   "nome": "Painel ripado (ripas + base), por área",
+   "unidade": "m²"
+  },
+  {
+   "id": "cnc-oval",
+   "nome": "Usinagem CNC recorte oval",
+   "unidade": "un"
+  },
+  {
+   "id": "calha",
+   "nome": "Calha elétrica embutida",
+   "unidade": "un"
+  },
+  {
+   "id": "estofado",
+   "nome": "Estofado (caminha de gato)",
+   "unidade": "un"
+  },
+  {
+   "id": "puxador-madeira",
+   "nome": "Puxador de madeira (bolinha)",
+   "unidade": "un"
+  }
+ ]
+}
