@@ -3,3 +3,11 @@ out/
 __pycache__/
 .pytest_cache/
 *.pyc
+.env
+.env.*
+!.env.example
+*.pem
+/secrets/
+docker/certs/*.crt
+docker/oda/*.deb
+dist/

@@ -1,0 +1,20 @@
+# Versões TESTADAS (Python 3.13, 2026-11-14). Use: pip install -r requirements/base.txt -c requirements/constraints.txt
+pymupdf==2.1
+pdfplumber==0.11.10
+pypdf==6.17.0
+pypdfium2==5.13.0
+pillow==12.3.0
+numpy==2.5.3
+pytesseract==0.3.13
+ezdxf==1.4.5
+tifffile==2026.11.12
+openpyxl==3.1.5
+python-calamine==0.9.1
+lxml==6.1.3
+svgpathtools==1.8.0
+shapely==2.2.0
+anthropic==2.8.0
+scipy==1.18.1
+pandas==3.0.5
+xlwt==1.3.0
+pytest==9.2.0

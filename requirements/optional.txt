@@ -1,0 +1,4 @@
+# OPCIONAIS: instale só se houver necessidade comprovada.
+pandas>=2.2             # tratamento tabular (BSD). Já presente no ambiente de desenvolvimento
+pypdfium2>=4            # renderização de PDF alternativa ao PyMuPDF (BSD/Apache-2.0); ver risco AGPL em docs/ambiente.md
+imagecodecs>=2024.1     # decodifica TIFF comprimido (LZW/JPEG/CCITT) no tifffile; hoje Pillow cobre como alternativa

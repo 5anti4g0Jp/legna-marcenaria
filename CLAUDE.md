@@ -7,8 +7,8 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 - Nunca inventar medida, material, espessura ou preço. Faltou dado -> pergunta de confirmação.
 - IA interpreta/extrai; **cálculos são do motor determinístico** (TypeScript). Regras de fabricação e preços
   são configuração editável, não código.
-- Não declarar compatibilidade com formato sem testar. Suportados e testados: PDF digital, PDF escaneado, PNG, JPG.
-  DWG/DXF/TIFF/XLSX/XLS/CSV/SVG: recusados explicitamente (etapas futuras).
+- Não declarar compatibilidade com formato sem testar. Na `main`: PDF digital/escaneado, PNG, JPG. Na branch `ambiente-leitores`: também
+  DXF, TIFF, XLSX, XLS, CSV, SVG (todos testados). **DWG NÃO validado** (ODA File Converter indisponível; leitor pronto, recusa com ToolMissing).
 - JSON é interno; o cliente nunca prepara JSON.
 - Sem frontend por enquanto (backend primeiro).
 - O usuário quer discordância/teste das ideias, sem bajulação; respostas diretas, em português.
@@ -24,6 +24,8 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 - `main` = Etapa 1 pronta (leitura). **46 testes**: 27 vitest (`npx vitest run`) + 19 pytest (`python -m pytest tests_py`).
 - `etapa2-leitura-exata` = Etapa 2 iniciada: `ingest/dimensions.py` (verificação geométrica de cotas, 8 testes novos; total 54 = 27 vitest + 27 pytest).
   Pedido do usuário (2026-11-14): ler o PDF com EXATIDÃO; deixar de lado orçamento/quantidades por enquanto.
+- `ambiente-leitores` (2026-11-14) = ambiente/leitores modulares (`ingest/readers/`), cliente Anthropic (`ingest/ai/`), Docker validado,
+  `docs/ambiente.md`. 110 testes pytest + 27 vitest = 137. Contêiner: 108 ok/2 puladas. Alerta: PyMuPDF é AGPL (decisão jurídica pendente).
 - `feature/config-estrutura` = WIP da configuração externa; `build.ts` quebrado nessa branch (lê prices.json removido).
   Aguarda aprovação da estrutura (fornecedores, store.ts, ai-context.ts).
 - Etapas: 1 leitura OK | 2 extração por IA pendente | 3 consumo/compra OK no motor | 4 orçamento OK (preços de referência) | 5 DWG/DXF/etc. pendente.

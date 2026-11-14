@@ -1,0 +1,19 @@
+# OBRIGATÓRIAS: o motor de leitura não funciona sem elas.
+# Versões testadas estão em requirements/constraints.txt (pip install -r base.txt -c constraints.txt).
+pymupdf>=2.1            # PDF: texto, coordenadas, imagens, vetores. LICENÇA AGPL-3.0 ou comercial (ver docs/ambiente.md)
+pdfplumber>=0.11        # PDF: tabelas e posicionamento (MIT)
+pypdf>=6.0              # PDF: inspeção/manipulação (BSD)
+pillow>=12              # imagens (MIT-CMU)
+numpy>=2.0              # numérico (BSD)
+pytesseract>=0.3.13     # ponte para o Tesseract (Apache-2.0). Exige o binário tesseract no sistema
+ezdxf>=1.4              # DXF (MIT)
+tifffile>=2025.1        # TIFF multipágina (BSD)
+openpyxl>=3.1           # XLSX (MIT)
+python-calamine>=0.3    # XLS/XLSX rápido (MIT)
+lxml>=5.0               # XML/SVG (BSD)
+svgpathtools>=1.7       # caminhos SVG (MIT). Traz scipy e svgwrite como dependências
+shapely>=2.0            # geometria 2D (BSD; GEOS/LGPL embutido nas rodas)
+anthropic>=0.40         # SDK oficial (MIT/Apache-2.0)
+# OpenCV: em CONTÊINER use a variante headless. No ambiente local de desenvolvimento já existe `opencv-python`
+# (completa); NÃO instale as duas no mesmo ambiente.
+opencv-python-headless>=4.9

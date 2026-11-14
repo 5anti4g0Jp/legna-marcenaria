@@ -1,6 +1,4 @@
-pymupdf>=2.1
-pytesseract>=0.3.13
-pillow
-numpy
-pytest
-# sistema: apt-get install tesseract-ocr tesseract-ocr-por
+# Compatível com o fluxo anterior: instala obrigatórias + desenvolvimento.
+-r requirements/base.txt
+-r requirements/dev.txt
+# sistema: apt-get install tesseract-ocr tesseract-ocr-por   (ver docs/ambiente.md e docker/Dockerfile)

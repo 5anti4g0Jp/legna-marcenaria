@@ -1,0 +1,3 @@
+# DESENVOLVIMENTO E TESTES
+pytest>=9.0             # testes
+xlwt>=1.3               # SÓ para gerar fixtures .xls nos testes (BSD)
