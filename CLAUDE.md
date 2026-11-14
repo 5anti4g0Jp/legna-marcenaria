@@ -25,6 +25,7 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 - `etapa2-tecnica` (2026-11-14) = ETAPA 0 (baseline+gabarito em `evaluation/`) + ETAPA 1 (`ingest/technical/`: 6 estados, modelo rastreável, registro de revisões humanas).
   251 pytest + 27 vitest. Algoritmo de cotas CONGELADO (`evaluation/baseline_etapa0/dimensions.py`, sha 696a8b83…; `ingest/dimensions.py` idêntico e NÃO alterado).
   Regra: nada é aprovado sem humano identificado; `estado` é derivado do histórico; análise automática nunca é apagada. Docs: `docs/etapa1_estados_e_modelo.md`.
+  Fluxo de revisão/versionamento (registro→relatório→resolução→congelamento rev1) PRONTO e testado c/ respostas simuladas (285 pytest + 27 vitest); docs/revisao_independente_e_baseline_revisada.md.
   PENDENTE: revisão independente do gabarito (folha em `evaluation/review/`), 2-3 PDFs reais da Legna c/ software de origem, chave Anthropic antes da Etapa 8.
 - `etapa2-leitura-exata` = Etapa 2 iniciada: `ingest/dimensions.py` (verificação geométrica de cotas, 8 testes novos; total 54 = 27 vitest + 27 pytest).
   Pedido do usuário (2026-11-14): ler o PDF com EXATIDÃO; deixar de lado orçamento/quantidades por enquanto.
