@@ -22,12 +22,17 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 
 ## Estado (2026-11-12)
 - `main` = Etapa 1 pronta (leitura). **46 testes**: 27 vitest (`npx vitest run`) + 19 pytest (`python -m pytest tests_py`).
+- `etapa2-tecnica` (2026-11-14) = ETAPA 0 (baseline+gabarito em `evaluation/`) + ETAPA 1 (`ingest/technical/`: 6 estados, modelo rastreável, registro de revisões humanas).
+  251 pytest + 27 vitest. Algoritmo de cotas CONGELADO (`evaluation/baseline_etapa0/dimensions.py`, sha 696a8b83…; `ingest/dimensions.py` idêntico e NÃO alterado).
+  Regra: nada é aprovado sem humano identificado; `estado` é derivado do histórico; análise automática nunca é apagada. Docs: `docs/etapa1_estados_e_modelo.md`.
+  PENDENTE: revisão independente do gabarito (folha em `evaluation/review/`), 2-3 PDFs reais da Legna c/ software de origem, chave Anthropic antes da Etapa 8.
 - `etapa2-leitura-exata` = Etapa 2 iniciada: `ingest/dimensions.py` (verificação geométrica de cotas, 8 testes novos; total 54 = 27 vitest + 27 pytest).
   Pedido do usuário (2026-11-14): ler o PDF com EXATIDÃO; deixar de lado orçamento/quantidades por enquanto.
 - `ambiente-leitores` (2026-11-14) = ambiente/leitores modulares (`ingest/readers/`), cliente Anthropic (`ingest/ai/`), Docker validado,
   `docs/ambiente.md`. 110 testes pytest + 27 vitest = 137. Contêiner: 108 ok/2 puladas. Alerta: PyMuPDF é AGPL (decisão jurídica pendente).
 - `feature/config-estrutura` = WIP da configuração externa; `build.ts` quebrado nessa branch (lê prices.json removido).
   Aguarda aprovação da estrutura (fornecedores, store.ts, ai-context.ts).
+- Plano da leitura técnica: 0 baseline OK | 1 estados/modelo OK | 2 números (decimais/unidades) | 3 tolerância/escalas | 4 textos deslocados | 5 vistas | 6 soma de cadeia | 7 componentes | 8 IA | 9 relatório.
 - Etapas: 1 leitura OK | 2 extração por IA pendente | 3 consumo/compra OK no motor | 4 orçamento OK (preços de referência) | 5 DWG/DXF/etc. pendente.
 - OCR medido (scan simulado): 78-100% das cotas, 0-13 números falsos/página -> **OCR nunca é dado confirmado**.
 - Todos os preços e a mão de obra são de REFERÊNCIA (inventados pelo assistente, status "referencia"). Nenhum é da Legna.

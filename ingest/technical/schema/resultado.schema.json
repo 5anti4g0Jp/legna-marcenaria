@@ -1,0 +1,551 @@
+{
+ "$defs": {
+  "Algoritmo": {
+   "properties": {
+    "arquivo": {
+     "title": "Arquivo",
+     "type": "string"
+    },
+    "nome": {
+     "title": "Nome",
+     "type": "string"
+    },
+    "parametros": {
+     "additionalProperties": true,
+     "title": "Parametros",
+     "type": "object"
+    },
+    "sha256": {
+     "title": "Sha256",
+     "type": "string"
+    }
+   },
+   "required": [
+    "nome",
+    "arquivo",
+    "sha256"
+   ],
+   "title": "Algoritmo",
+   "type": "object"
+  },
+  "AnaliseAutomatica": {
+   "description": "O que o algoritmo concluiu. Imutável na prática: decisões humanas NÃO a sobrescrevem.",
+   "properties": {
+    "algoritmo_sha256": {
+     "title": "Algoritmo Sha256",
+     "type": "string"
+    },
+    "estado": {
+     "$ref": "#/$defs/Estado"
+    },
+    "estado_algoritmo": {
+     "title": "Estado Algoritmo",
+     "type": "string"
+    }
+   },
+   "required": [
+    "estado",
+    "estado_algoritmo",
+    "algoritmo_sha256"
+   ],
+   "title": "AnaliseAutomatica",
+   "type": "object"
+  },
+  "Ator": {
+   "properties": {
+    "id": {
+     "minLength": 1,
+     "title": "Id",
+     "type": "string"
+    },
+    "tipo": {
+     "$ref": "#/$defs/AtorTipo"
+    }
+   },
+   "required": [
+    "tipo",
+    "id"
+   ],
+   "title": "Ator",
+   "type": "object"
+  },
+  "AtorTipo": {
+   "enum": [
+    "sistema",
+    "humano"
+   ],
+   "title": "AtorTipo",
+   "type": "string"
+  },
+  "Documento": {
+   "properties": {
+    "arquivo": {
+     "title": "Arquivo",
+     "type": "string"
+    },
+    "paginas": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Paginas"
+    },
+    "sha256": {
+     "pattern": "^[0-9a-f]{64}$",
+     "title": "Sha256",
+     "type": "string"
+    }
+   },
+   "required": [
+    "arquivo",
+    "sha256"
+   ],
+   "title": "Documento",
+   "type": "object"
+  },
+  "Estado": {
+   "enum": [
+    "extraido",
+    "geometricamente_consistente",
+    "conflito",
+    "sem_medicao",
+    "pendente_revisao",
+    "aprovado"
+   ],
+   "title": "Estado",
+   "type": "string"
+  },
+  "Evidencia": {
+   "description": "Prova auditável de uma conclusão. `dados` guarda os números usados (escala, intervalos, desvios...).",
+   "properties": {
+    "coords": {
+     "anyOf": [
+      {
+       "maxItems": 4,
+       "minItems": 4,
+       "prefixItems": [
+        {
+         "type": "number"
+        },
+        {
+         "type": "number"
+        },
+        {
+         "type": "number"
+        },
+        {
+         "type": "number"
+        }
+       ],
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Coords"
+    },
+    "dados": {
+     "additionalProperties": true,
+     "title": "Dados",
+     "type": "object"
+    },
+    "descricao": {
+     "title": "Descricao",
+     "type": "string"
+    },
+    "metodo": {
+     "title": "Metodo",
+     "type": "string"
+    },
+    "tipo": {
+     "enum": [
+      "leitura",
+      "unidade",
+      "geometria",
+      "conflito_geometrico",
+      "sem_medicao",
+      "orientacao",
+      "revisao_humana",
+      "observacao"
+     ],
+     "title": "Tipo",
+     "type": "string"
+    }
+   },
+   "required": [
+    "tipo",
+    "descricao",
+    "metodo"
+   ],
+   "title": "Evidencia",
+   "type": "object"
+  },
+  "Medida": {
+   "description": "Medida rastreável. IMUTÁVEL fora dos métodos de transição.\n\nO `estado` NÃO é um campo gravável: é sempre o destino da última transição do `histórico`. Histórico, evidências e\nconflitos são tuplas. Qualquer tentativa de escrever direto (ex.: `m.estado = ...`) levanta AttributeError, e as mudanças\nfeitas pelos métodos são revalidadas e REVERTIDAS se violarem um invariante.",
+   "properties": {
+    "analise_automatica": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/AnaliseAutomatica"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "angulo_graus": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Angulo Graus"
+    },
+    "componente": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Componente"
+    },
+    "confianca": {
+     "anyOf": [
+      {
+       "maximum": 1,
+       "minimum": 0,
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Confianca"
+    },
+    "conflitos": {
+     "default": [],
+     "items": {
+      "additionalProperties": true,
+      "type": "object"
+     },
+     "title": "Conflitos",
+     "type": "array"
+    },
+    "coords": {
+     "maxItems": 4,
+     "minItems": 4,
+     "prefixItems": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      },
+      {
+       "type": "number"
+      }
+     ],
+     "title": "Coords",
+     "type": "array"
+    },
+    "documento": {
+     "$ref": "#/$defs/Documento"
+    },
+    "estado": {
+     "$ref": "#/$defs/Estado",
+     "readOnly": true
+    },
+    "evidencias": {
+     "default": [],
+     "items": {
+      "$ref": "#/$defs/Evidencia"
+     },
+     "title": "Evidencias",
+     "type": "array"
+    },
+    "historico": {
+     "default": [],
+     "items": {
+      "$ref": "#/$defs/Transicao"
+     },
+     "title": "Historico",
+     "type": "array"
+    },
+    "id": {
+     "title": "Id",
+     "type": "string"
+    },
+    "metodo_extracao": {
+     "title": "Metodo Extracao",
+     "type": "string"
+    },
+    "orientacao": {
+     "default": "desconhecida",
+     "enum": [
+      "horizontal",
+      "vertical",
+      "inclinada",
+      "desconhecida"
+     ],
+     "title": "Orientacao",
+     "type": "string"
+    },
+    "pagina": {
+     "minimum": 1,
+     "title": "Pagina",
+     "type": "integer"
+    },
+    "revisao": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Revisao"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "texto_original": {
+     "title": "Texto Original",
+     "type": "string"
+    },
+    "unidade": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Unidade"
+    },
+    "unidade_fonte": {
+     "default": "desconhecida",
+     "enum": [
+      "declarada_na_pagina",
+      "assumida",
+      "desconhecida"
+     ],
+     "title": "Unidade Fonte",
+     "type": "string"
+    },
+    "valor_normalizado": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Valor Normalizado"
+    },
+    "vista": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Vista"
+    }
+   },
+   "required": [
+    "id",
+    "documento",
+    "pagina",
+    "texto_original",
+    "coords",
+    "metodo_extracao",
+    "estado"
+   ],
+   "title": "Medida",
+   "type": "object"
+  },
+  "Resumo": {
+   "properties": {
+    "aprovadas_automaticamente": {
+     "default": 0,
+     "title": "Aprovadas Automaticamente",
+     "type": "integer"
+    },
+    "por_estado": {
+     "additionalProperties": {
+      "type": "integer"
+     },
+     "title": "Por Estado",
+     "type": "object"
+    },
+    "total": {
+     "title": "Total",
+     "type": "integer"
+    }
+   },
+   "required": [
+    "total",
+    "por_estado"
+   ],
+   "title": "Resumo",
+   "type": "object"
+  },
+  "Revisao": {
+   "properties": {
+    "decisao": {
+     "enum": [
+      "aprovado",
+      "rejeitado"
+     ],
+     "title": "Decisao",
+     "type": "string"
+    },
+    "em": {
+     "title": "Em",
+     "type": "string"
+    },
+    "observacao": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Observacao"
+    },
+    "revisor": {
+     "minLength": 1,
+     "title": "Revisor",
+     "type": "string"
+    },
+    "valor_confirmado": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Valor Confirmado"
+    }
+   },
+   "required": [
+    "revisor",
+    "decisao",
+    "em"
+   ],
+   "title": "Revisao",
+   "type": "object"
+  },
+  "Transicao": {
+   "properties": {
+    "ator": {
+     "$ref": "#/$defs/Ator"
+    },
+    "de": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Estado"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "em": {
+     "title": "Em",
+     "type": "string"
+    },
+    "motivo": {
+     "title": "Motivo",
+     "type": "string"
+    },
+    "para": {
+     "$ref": "#/$defs/Estado"
+    }
+   },
+   "required": [
+    "de",
+    "para",
+    "ator",
+    "em",
+    "motivo"
+   ],
+   "title": "Transicao",
+   "type": "object"
+  }
+ },
+ "properties": {
+  "algoritmo": {
+   "$ref": "#/$defs/Algoritmo"
+  },
+  "avisos": {
+   "items": {
+    "type": "string"
+   },
+   "title": "Avisos",
+   "type": "array"
+  },
+  "documento": {
+   "$ref": "#/$defs/Documento"
+  },
+  "gerado_em": {
+   "title": "Gerado Em",
+   "type": "string"
+  },
+  "medidas": {
+   "items": {
+    "$ref": "#/$defs/Medida"
+   },
+   "title": "Medidas",
+   "type": "array"
+  },
+  "resumo": {
+   "$ref": "#/$defs/Resumo"
+  },
+  "schema_version": {
+   "default": "etapa1.0",
+   "title": "Schema Version",
+   "type": "string"
+  }
+ },
+ "required": [
+  "gerado_em",
+  "documento",
+  "algoritmo",
+  "medidas",
+  "resumo"
+ ],
+ "title": "Resultado",
+ "type": "object"
+}

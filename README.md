@@ -10,6 +10,7 @@ Pipeline: **leitura de arquivos (Python)** -> *extração de peças (IA, pendent
 | 2. Identificação de peças/cotas/materiais por IA | **Iniciada**: verificação geométrica de cotas pronta (`ingest/dimensions.py`); associação cota->peça por IA pendente |
 | 3. Consumo, ferragens, compra | Motor pronto (`src/`), regras ainda fixas no código |
 | 4. Orçamento | Pronto (`src/engine.ts`), preços de referência |
+| Leitura técnica (branch `etapa2-tecnica`) | **Etapa 0** baseline/gabarito e **Etapa 1** seis estados + modelo rastreável concluídas (`docs/etapa1_estados_e_modelo.md`) |
 | 5. DXF, TIFF, XLSX/XLS/CSV, SVG | Leitores prontos e testados na branch `ambiente-leitores` (ver `docs/ambiente.md`) |
 | 5b. DWG | Leitor pronto, **não validado** (ODA File Converter indisponível) |
 
