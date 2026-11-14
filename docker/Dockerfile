@@ -38,6 +38,7 @@ ENTRYPOINT ["python", "-m", "ingest.readers"]
 FROM base AS test
 RUN pip install -r requirements/dev.txt -c requirements/constraints.txt
 ENV LEGNA_FIXTURES=/fixtures
+COPY evaluation/ evaluation/
 COPY tests_py/ tests_py/
 COPY .gitignore .env.example ./
 USER app

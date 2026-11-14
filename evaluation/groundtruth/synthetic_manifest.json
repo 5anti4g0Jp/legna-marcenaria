@@ -1,0 +1,1590 @@
+{
+ "docs": [
+  {
+   "name": "lay_acima",
+   "style": "lay",
+   "scales": {
+    "v1": 4.0
+   },
+   "truths": [
+    {
+     "id": "lay_acima-d1",
+     "text": "2000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 2000.0,
+     "written_mm": 2000.0,
+     "interval_pt": 500.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      350.0,
+      527.0
+     ],
+     "bbox": [
+      339.99,
+      520.21,
+      360.01,
+      532.57
+     ],
+     "component": "total"
+    },
+    {
+     "id": "lay_acima-d2",
+     "text": "1000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000.0,
+     "written_mm": 1000.0,
+     "interval_pt": 250.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      225.0,
+      509.0
+     ],
+     "bbox": [
+      214.99,
+      502.21,
+      235.01,
+      514.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_acima-d3",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      425.0,
+      509.0
+     ],
+     "bbox": [
+      417.49,
+      502.21,
+      432.51,
+      514.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_acima-d4",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 100.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      550.0,
+      509.0
+     ],
+     "bbox": [
+      542.49,
+      502.21,
+      557.51,
+      514.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_acima-d5",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      89.0,
+      400.0
+     ],
+     "bbox": [
+      82.2,
+      392.49,
+      94.57,
+      407.51
+     ],
+     "component": "altura"
+    },
+    {
+     "id": "lay_acima-d6",
+     "text": "450",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 450.0,
+     "written_mm": 450.0,
+     "interval_pt": 112.5,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      69.0,
+      356.2
+     ],
+     "bbox": [
+      62.2,
+      348.74,
+      74.57,
+      363.76
+     ],
+     "component": "vao"
+    },
+    {
+     "id": "lay_acima-n7",
+     "text": "10",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      65.0,
+      117
+     ],
+     "bbox": [
+      60.0,
+      110.32,
+      70.01,
+      122.69
+     ],
+     "component": "quantidade"
+    },
+    {
+     "id": "lay_acima-n8",
+     "text": "3000K",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      213.0,
+      117
+     ],
+     "bbox": [
+      200.0,
+      110.32,
+      226.02,
+      122.69
+     ],
+     "component": "temperatura_cor"
+    },
+    {
+     "id": "lay_acima-n9",
+     "text": "3",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      353.5,
+      117
+     ],
+     "bbox": [
+      351.01,
+      110.32,
+      356.01,
+      122.69
+     ],
+     "component": "revisao"
+    },
+    {
+     "id": "lay_acima-n10",
+     "text": "3",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      342.5,
+      523
+     ],
+     "bbox": [
+      340.0,
+      516.33,
+      345.0,
+      528.69
+     ],
+     "component": "marca_de_nota_junto_a_cota"
+    },
+    {
+     "id": "lay_acima-n11",
+     "text": "2",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      152.5,
+      97
+     ],
+     "bbox": [
+      150.0,
+      90.32,
+      155.0,
+      102.69
+     ],
+     "component": "numero_isolado"
+    }
+   ]
+  },
+  {
+   "name": "lay_abaixo",
+   "style": "lay_abaixo",
+   "scales": {
+    "v1": 4.0
+   },
+   "truths": [
+    {
+     "id": "lay_abaixo-d1",
+     "text": "2000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 2000.0,
+     "written_mm": 2000.0,
+     "interval_pt": 500.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      350.0,
+      547.8
+     ],
+     "bbox": [
+      336.66,
+      538.74,
+      363.34,
+      555.23
+     ],
+     "component": "total"
+    },
+    {
+     "id": "lay_abaixo-d2",
+     "text": "1000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000.0,
+     "written_mm": 1000.0,
+     "interval_pt": 250.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      225.0,
+      529.8
+     ],
+     "bbox": [
+      211.66,
+      520.74,
+      238.34,
+      537.23
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_abaixo-d3",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      425.0,
+      529.8
+     ],
+     "bbox": [
+      414.99,
+      520.74,
+      435.01,
+      537.23
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_abaixo-d4",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 100.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      550.0,
+      529.8
+     ],
+     "bbox": [
+      539.99,
+      520.74,
+      560.01,
+      537.23
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "lay_abaixo-d5",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      68.2,
+      400.0
+     ],
+     "bbox": [
+      59.14,
+      389.99,
+      75.63,
+      410.01
+     ],
+     "component": "altura"
+    },
+    {
+     "id": "lay_abaixo-d6",
+     "text": "450",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 450.0,
+     "written_mm": 450.0,
+     "interval_pt": 112.5,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      48.2,
+      356.2
+     ],
+     "bbox": [
+      39.14,
+      346.24,
+      55.63,
+      366.26
+     ],
+     "component": "vao"
+    }
+   ]
+  },
+  {
+   "name": "cad_preto_slash",
+   "style": "cad",
+   "scales": {
+    "v1": 4.0
+   },
+   "truths": [
+    {
+     "id": "cad_preto_slash-d1",
+     "text": "2000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 2000.0,
+     "written_mm": 2000.0,
+     "interval_pt": 500.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      350.0,
+      528.0
+     ],
+     "bbox": [
+      341.1,
+      521.96,
+      358.9,
+      532.95
+     ],
+     "component": "total"
+    },
+    {
+     "id": "cad_preto_slash-d2",
+     "text": "1000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000.0,
+     "written_mm": 1000.0,
+     "interval_pt": 250.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      225.0,
+      510.0
+     ],
+     "bbox": [
+      216.1,
+      503.96,
+      233.9,
+      514.95
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "cad_preto_slash-d3",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      425.0,
+      510.0
+     ],
+     "bbox": [
+      418.33,
+      503.96,
+      431.67,
+      514.95
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "cad_preto_slash-d4",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 100.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      550.0,
+      510.0
+     ],
+     "bbox": [
+      543.33,
+      503.96,
+      556.67,
+      514.95
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "cad_preto_slash-d5",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      88.0,
+      400.0
+     ],
+     "bbox": [
+      81.96,
+      393.33,
+      92.95,
+      406.67
+     ],
+     "component": "altura"
+    },
+    {
+     "id": "cad_preto_slash-d6",
+     "text": "450",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 450.0,
+     "written_mm": 450.0,
+     "interval_pt": 112.5,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      68.0,
+      356.2
+     ],
+     "bbox": [
+      61.96,
+      349.58,
+      72.95,
+      362.92
+     ],
+     "component": "vao"
+    }
+   ]
+  },
+  {
+   "name": "setas_texto_na_linha",
+   "style": "setas",
+   "scales": {
+    "v1": 4.0
+   },
+   "truths": [
+    {
+     "id": "setas_texto_na_linha-d1",
+     "text": "2000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 2000.0,
+     "written_mm": 2000.0,
+     "interval_pt": 500.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      350.0,
+      530.0
+     ],
+     "bbox": [
+      339.99,
+      523.21,
+      360.01,
+      535.57
+     ],
+     "component": "total"
+    },
+    {
+     "id": "setas_texto_na_linha-d2",
+     "text": "1000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000.0,
+     "written_mm": 1000.0,
+     "interval_pt": 250.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      225.0,
+      512.0
+     ],
+     "bbox": [
+      214.99,
+      505.21,
+      235.01,
+      517.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "setas_texto_na_linha-d3",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      425.0,
+      512.0
+     ],
+     "bbox": [
+      417.49,
+      505.21,
+      432.51,
+      517.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "setas_texto_na_linha-d4",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 100.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      550.0,
+      512.0
+     ],
+     "bbox": [
+      542.49,
+      505.21,
+      557.51,
+      517.57
+     ],
+     "component": "parcial"
+    },
+    {
+     "id": "setas_texto_na_linha-d5",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      86.0,
+      400.0
+     ],
+     "bbox": [
+      79.2,
+      392.49,
+      91.57,
+      407.51
+     ],
+     "component": "altura"
+    },
+    {
+     "id": "setas_texto_na_linha-d6",
+     "text": "450",
+     "role": "cota_regular",
+     "orientation": "vertical",
+     "value_mm": 450.0,
+     "written_mm": 450.0,
+     "interval_pt": 112.5,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      66.0,
+      356.2
+     ],
+     "bbox": [
+      59.2,
+      348.74,
+      71.57,
+      363.76
+     ],
+     "component": "vao"
+    }
+   ]
+  },
+  {
+   "name": "decimais_unidades",
+   "style": "lay",
+   "scales": {
+    "v0": 0.15625,
+    "v1": 15.0,
+    "v2": 5.625,
+    "v3": 0.09375,
+    "v4": 3.75
+   },
+   "truths": [
+    {
+     "id": "decimais_unidades-d1",
+     "text": "12,5",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 12.5,
+     "written_mm": 12.5,
+     "interval_pt": 80.0,
+     "scale": 0.15625,
+     "view": "v0",
+     "planted_error": false,
+     "fmt": "decimal",
+     "size_class": "<=60mm",
+     "anchor": [
+      160.0,
+      57.0
+     ],
+     "bbox": [
+      151.24,
+      50.21,
+      168.76,
+      62.57
+     ],
+     "component": null
+    },
+    {
+     "id": "decimais_unidades-d2",
+     "text": "1.200",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1200,
+     "written_mm": 1200.0,
+     "interval_pt": 80.0,
+     "scale": 15.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "milhar",
+     "size_class": ">600mm",
+     "anchor": [
+      160.0,
+      97.0
+     ],
+     "bbox": [
+      148.74,
+      90.21,
+      171.26,
+      102.57
+     ],
+     "component": null
+    },
+    {
+     "id": "decimais_unidades-d3",
+     "text": "45cm",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 450,
+     "written_mm": 450.0,
+     "interval_pt": 80.0,
+     "scale": 5.625,
+     "view": "v2",
+     "planted_error": false,
+     "fmt": "unidade",
+     "size_class": "61-600mm",
+     "anchor": [
+      160.0,
+      137.0
+     ],
+     "bbox": [
+      149.0,
+      130.21,
+      171.0,
+      142.57
+     ],
+     "component": null
+    },
+    {
+     "id": "decimais_unidades-d4",
+     "text": "7.5",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 7.5,
+     "written_mm": 7.5,
+     "interval_pt": 80.0,
+     "scale": 0.09375,
+     "view": "v3",
+     "planted_error": false,
+     "fmt": "decimal",
+     "size_class": "<=60mm",
+     "anchor": [
+      160.0,
+      177.0
+     ],
+     "bbox": [
+      153.74,
+      170.21,
+      166.25,
+      182.57
+     ],
+     "component": null
+    },
+    {
+     "id": "decimais_unidades-d5",
+     "text": "300mm",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 300,
+     "written_mm": 300.0,
+     "interval_pt": 80.0,
+     "scale": 3.75,
+     "view": "v4",
+     "planted_error": false,
+     "fmt": "unidade",
+     "size_class": "61-600mm",
+     "anchor": [
+      160.0,
+      217.0
+     ],
+     "bbox": [
+      145.0,
+      210.21,
+      175.0,
+      222.57
+     ],
+     "component": null
+    }
+   ]
+  },
+  {
+   "name": "inclinada",
+   "style": "lay",
+   "scales": {
+    "v1": 4.0
+   },
+   "truths": [
+    {
+     "id": "inclinada-d1",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "inclinada",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      213.5,
+      159.9
+     ],
+     "bbox": [
+      204.16,
+      151.33,
+      223.35,
+      169.54
+     ],
+     "component": null
+    },
+    {
+     "id": "inclinada-d2",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "inclinada",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      218.6,
+      277.2
+     ],
+     "bbox": [
+      209.34,
+      267.92,
+      228.7,
+      287.28
+     ],
+     "component": null
+    },
+    {
+     "id": "inclinada-d3",
+     "text": "500",
+     "role": "cota_regular",
+     "orientation": "inclinada",
+     "value_mm": 500.0,
+     "written_mm": 500.0,
+     "interval_pt": 125.0,
+     "scale": 4.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      116.2,
+      447.4
+     ],
+     "bbox": [
+      107.58,
+      437.48,
+      125.79,
+      456.66
+     ],
+     "component": null
+    }
+   ]
+  },
+  {
+   "name": "duas_escalas",
+   "style": "lay",
+   "scales": {
+    "vistaA": 4.0,
+    "vistaB": 6.5
+   },
+   "truths": [
+    {
+     "id": "duas_escalas-d1",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 200.0,
+     "scale": 4.0,
+     "view": "vistaA",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      140.0,
+      317.0
+     ],
+     "bbox": [
+      132.49,
+      310.21,
+      147.51,
+      322.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-d2",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 150.0,
+     "scale": 4.0,
+     "view": "vistaA",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      115.0,
+      339.0
+     ],
+     "bbox": [
+      107.49,
+      332.21,
+      122.51,
+      344.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-d3",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 100.0,
+     "scale": 4.0,
+     "view": "vistaA",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      90.0,
+      361.0
+     ],
+     "bbox": [
+      82.49,
+      354.21,
+      97.51,
+      366.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-d4",
+     "text": "800",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 800.0,
+     "written_mm": 800.0,
+     "interval_pt": 123.077,
+     "scale": 6.5,
+     "view": "vistaB",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      391.5,
+      317.0
+     ],
+     "bbox": [
+      384.03,
+      310.21,
+      399.04,
+      322.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-d5",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 92.308,
+     "scale": 6.5,
+     "view": "vistaB",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      376.2,
+      339.0
+     ],
+     "bbox": [
+      368.65,
+      332.21,
+      383.66,
+      344.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-d6",
+     "text": "400",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 400.0,
+     "written_mm": 400.0,
+     "interval_pt": 61.538,
+     "scale": 6.5,
+     "view": "vistaB",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      360.8,
+      361.0
+     ],
+     "bbox": [
+      353.26,
+      354.21,
+      368.28,
+      366.57
+     ],
+     "component": null
+    },
+    {
+     "id": "duas_escalas-n7",
+     "text": "2",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      87.0,
+      597
+     ],
+     "bbox": [
+      84.5,
+      590.33,
+      89.51,
+      602.69
+     ],
+     "component": "titulo"
+    },
+    {
+     "id": "duas_escalas-n8",
+     "text": "10",
+     "role": "nao_cota",
+     "orientation": "horizontal",
+     "value_mm": null,
+     "written_mm": null,
+     "interval_pt": null,
+     "scale": null,
+     "view": "-",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": null,
+     "anchor": [
+      205.0,
+      597
+     ],
+     "bbox": [
+      200.0,
+      590.33,
+      210.01,
+      602.69
+     ],
+     "component": "quantidade"
+    }
+   ]
+  },
+  {
+   "name": "erro_plantado",
+   "style": "lay",
+   "scales": {
+    "v1": 5.0
+   },
+   "truths": [
+    {
+     "id": "erro_plantado-d1",
+     "text": "1000",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000,
+     "written_mm": 1000.0,
+     "interval_pt": 200.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      200.0,
+      57.0
+     ],
+     "bbox": [
+      189.99,
+      50.21,
+      210.01,
+      62.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d2",
+     "text": "450",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 450,
+     "written_mm": 450.0,
+     "interval_pt": 90.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      145.0,
+      91.0
+     ],
+     "bbox": [
+      137.49,
+      84.21,
+      152.51,
+      96.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d3",
+     "text": "764",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 764,
+     "written_mm": 764.0,
+     "interval_pt": 152.8,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      176.4,
+      125.0
+     ],
+     "bbox": [
+      168.89,
+      118.21,
+      183.91,
+      130.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d4",
+     "text": "430",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 450,
+     "written_mm": 430.0,
+     "interval_pt": 90.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": true,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      145.0,
+      159.0
+     ],
+     "bbox": [
+      137.49,
+      152.21,
+      152.51,
+      164.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d5",
+     "text": "100",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000,
+     "written_mm": 100.0,
+     "interval_pt": 200.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": true,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      200.0,
+      193.0
+     ],
+     "bbox": [
+      192.49,
+      186.21,
+      207.51,
+      198.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d6",
+     "text": "746",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 764,
+     "written_mm": 746.0,
+     "interval_pt": 152.8,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": true,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      176.4,
+      227.0
+     ],
+     "bbox": [
+      168.89,
+      220.21,
+      183.91,
+      232.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d7",
+     "text": "1010",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 1000,
+     "written_mm": 1010.0,
+     "interval_pt": 200.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": true,
+     "fmt": "inteiro",
+     "size_class": ">600mm",
+     "anchor": [
+      200.0,
+      261.0
+     ],
+     "bbox": [
+      189.99,
+      254.21,
+      210.01,
+      266.57
+     ],
+     "component": null
+    },
+    {
+     "id": "erro_plantado-d8",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600,
+     "written_mm": 600.0,
+     "interval_pt": 120.0,
+     "scale": 5.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      160.0,
+      295.0
+     ],
+     "bbox": [
+      152.49,
+      288.21,
+      167.51,
+      300.57
+     ],
+     "component": null
+    }
+   ]
+  },
+  {
+   "name": "deslocada_chamada",
+   "style": "lay",
+   "scales": {
+    "v1": 2.0
+   },
+   "truths": [
+    {
+     "id": "deslocada_chamada-d1",
+     "text": "15",
+     "role": "cota_deslocada",
+     "orientation": "horizontal",
+     "value_mm": 15.0,
+     "written_mm": 15.0,
+     "interval_pt": 7.5,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "<=60mm",
+     "anchor": [
+      221.5,
+      89.0
+     ],
+     "bbox": [
+      216.5,
+      82.21,
+      226.5,
+      94.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d2",
+     "text": "18",
+     "role": "cota_deslocada",
+     "orientation": "horizontal",
+     "value_mm": 18.0,
+     "written_mm": 18.0,
+     "interval_pt": 9.0,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "<=60mm",
+     "anchor": [
+      223.0,
+      129.0
+     ],
+     "bbox": [
+      218.0,
+      122.21,
+      228.0,
+      134.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d3",
+     "text": "25",
+     "role": "cota_deslocada",
+     "orientation": "horizontal",
+     "value_mm": 25.0,
+     "written_mm": 25.0,
+     "interval_pt": 12.5,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "<=60mm",
+     "anchor": [
+      226.5,
+      169.0
+     ],
+     "bbox": [
+      221.5,
+      162.21,
+      231.5,
+      174.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d4",
+     "text": "15",
+     "role": "cota_deslocada",
+     "orientation": "horizontal",
+     "value_mm": 15.0,
+     "written_mm": 15.0,
+     "interval_pt": 7.5,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "<=60mm",
+     "anchor": [
+      221.5,
+      209.0
+     ],
+     "bbox": [
+      216.5,
+      202.21,
+      226.5,
+      214.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d5",
+     "text": "600",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 600.0,
+     "written_mm": 600.0,
+     "interval_pt": 300.0,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      270.0,
+      437.0
+     ],
+     "bbox": [
+      262.49,
+      430.21,
+      277.51,
+      442.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d6",
+     "text": "300",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 300.0,
+     "written_mm": 300.0,
+     "interval_pt": 150.0,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      195.0,
+      457.0
+     ],
+     "bbox": [
+      187.49,
+      450.21,
+      202.51,
+      462.57
+     ],
+     "component": null
+    },
+    {
+     "id": "deslocada_chamada-d7",
+     "text": "300",
+     "role": "cota_regular",
+     "orientation": "horizontal",
+     "value_mm": 300.0,
+     "written_mm": 300.0,
+     "interval_pt": 150.0,
+     "scale": 2.0,
+     "view": "v1",
+     "planted_error": false,
+     "fmt": "inteiro",
+     "size_class": "61-600mm",
+     "anchor": [
+      345.0,
+      457.0
+     ],
+     "bbox": [
+      337.49,
+      450.21,
+      352.51,
+      462.57
+     ],
+     "component": null
+    }
+   ]
+  }
+ ]
+}
