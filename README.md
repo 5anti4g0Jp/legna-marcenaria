@@ -7,7 +7,7 @@ Pipeline: **leitura de arquivos (Python)** -> *extração de peças (IA, pendent
 | Etapa | Situação |
 |---|---|
 | 1. Leitura de PDF digital/escaneado, PNG, JPG | **Pronta e testada** (`ingest/`, `tests_py/`) |
-| 2. Identificação de peças/cotas/materiais por IA | Não implementada (exige chave de API) |
+| 2. Identificação de peças/cotas/materiais por IA | **Iniciada**: verificação geométrica de cotas pronta (`ingest/dimensions.py`); associação cota->peça por IA pendente |
 | 3. Consumo, ferragens, compra | Motor pronto (`src/`), regras ainda fixas no código |
 | 4. Orçamento | Pronto (`src/engine.ts`), preços de referência |
 | 5. DWG, DXF, TIFF, XLSX/XLS/CSV, SVG | **Não implementada: recusados explicitamente** |
@@ -50,3 +50,20 @@ python -m ingest.cli projeto.pdf saida.json
 python -m pytest tests_py     # leitura
 npx vitest run                # motor de cálculo
 ```
+
+## Verificação geométrica de cotas (`ingest/dimensions.py`)
+
+Em PDF vetorial (ex.: SketchUp LayOut), cada cota tem uma linha desenhada com o comprimento real. O módulo mede esse
+comprimento no desenho e confere o número escrito: se `valor == comprimento x escala da vista`, a cota é **confirmada**.
+Sem IA e sem OCR. Status: `confirmado`, `confirmado_local` (escala própria de uma vista), `conflito`, `sem_medicao`, `sem_escala`.
+
+Medido no PDF de teste (34 págs, LayOut): 405 números lidos -> **181 confirmados (45%)**, 23 conflitos, 196 sem medição, 5 sem escala.
+
+Limites (importante):
+- **A cota escrita prevalece sobre o desenho.** A geometria só *confere*; conflito = alerta para revisão humana, nunca correção automática.
+- Parte dos 23 conflitos é **falso alerta** (ex.: página 10, várias vistas em escalas diferentes). Dois falsos alertas já corrigidos
+  (linha de outra cota que apenas cruza; riscos diagonais curtos), ambos cobertos por teste.
+- 48% dos números não são medidos (texto fora da linha de cota, chamadas/leaders). Esses dependem de outras verificações.
+- **Não detecta** erro de rótulo truncado como o "9" (era 100) da estante: isso exige conferir a soma da cadeia de cotas (não implementado).
+- Só vale para geometria vetorial. PDF escaneado/imagem não tem geometria: segue só OCR + confirmação humana.
+- Ainda não associa cada cota a uma peça (isso é a parte de IA da Etapa 2).

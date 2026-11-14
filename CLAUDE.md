@@ -22,6 +22,8 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 
 ## Estado (2026-11-12)
 - `main` = Etapa 1 pronta (leitura). **46 testes**: 27 vitest (`npx vitest run`) + 19 pytest (`python -m pytest tests_py`).
+- `etapa2-leitura-exata` = Etapa 2 iniciada: `ingest/dimensions.py` (verificação geométrica de cotas, 8 testes novos; total 54 = 27 vitest + 27 pytest).
+  Pedido do usuário (2026-11-14): ler o PDF com EXATIDÃO; deixar de lado orçamento/quantidades por enquanto.
 - `feature/config-estrutura` = WIP da configuração externa; `build.ts` quebrado nessa branch (lê prices.json removido).
   Aguarda aprovação da estrutura (fornecedores, store.ts, ai-context.ts).
 - Etapas: 1 leitura OK | 2 extração por IA pendente | 3 consumo/compra OK no motor | 4 orçamento OK (preços de referência) | 5 DWG/DXF/etc. pendente.
