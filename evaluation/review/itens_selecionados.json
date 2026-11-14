@@ -1,0 +1,317 @@
+{
+ "itens": [
+  {
+   "id": "p6-t3",
+   "grupos": [
+    "falsa_confirmacao",
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p6-t6",
+   "grupos": [
+    "falsa_confirmacao",
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p6-t24",
+   "grupos": [
+    "falsa_confirmacao",
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t9",
+   "grupos": [
+    "conflito",
+    "assumido",
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t26",
+   "grupos": [
+    "conflito",
+    "assumido",
+    "pequena"
+   ]
+  },
+  {
+   "id": "p6-t8",
+   "grupos": [
+    "conflito",
+    "assumido"
+   ]
+  },
+  {
+   "id": "p10-t3",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t5",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t6",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t7",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t10",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t11",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t12",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t16",
+   "grupos": [
+    "conflito",
+    "pequena"
+   ]
+  },
+  {
+   "id": "p10-t19",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t20",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p10-t21",
+   "grupos": [
+    "conflito"
+   ]
+  },
+  {
+   "id": "p1-t55",
+   "grupos": [
+    "confirmada_indeterminada"
+   ]
+  },
+  {
+   "id": "p10-t17",
+   "grupos": [
+    "confirmada_indeterminada",
+    "pequena"
+   ]
+  },
+  {
+   "id": "p10-t22",
+   "grupos": [
+    "confirmada_indeterminada"
+   ]
+  },
+  {
+   "id": "p1-t6",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t7",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t13",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t16",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t20",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t30",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t32",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t34",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t37",
+   "grupos": [
+    "pequena"
+   ]
+  },
+  {
+   "id": "p1-t44",
+   "grupos": [
+    "pequena"
+   ]
+  },
+  {
+   "id": "p6-t10",
+   "grupos": [
+    "pequena"
+   ]
+  },
+  {
+   "id": "p6-t18",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p6-t22",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p6-t25",
+   "grupos": [
+    "pequena"
+   ]
+  },
+  {
+   "id": "p6-t31",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p10-t13",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p10-t14",
+   "grupos": [
+    "pequena",
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p10-t4",
+   "grupos": [
+    "deslocada"
+   ]
+  },
+  {
+   "id": "p1-t14",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p1-t19",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p1-t27",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p6-t12",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p10-t1",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p10-t9",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p10-t15",
+   "grupos": [
+    "controle"
+   ]
+  },
+  {
+   "id": "p10-t18",
+   "grupos": [
+    "controle"
+   ]
+  }
+ ],
+ "contagem_por_grupo": {
+  "falsa_confirmacao": 3,
+  "conflito": 14,
+  "assumido": 3,
+  "confirmada_indeterminada": 3,
+  "pequena": 24,
+  "deslocada": 18,
+  "controle": 8
+ },
+ "total_unico": 46
+}
