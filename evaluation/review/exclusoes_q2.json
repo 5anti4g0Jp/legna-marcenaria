@@ -1,0 +1,32 @@
+{
+ "regra": "Nos itens abaixo NÃO há linha azul (o algoritmo não mediu intervalo); a pergunta 2 não se aplica. A resposta à pergunta 2 desses itens NÃO entra na comparação com o gabarito, na concordância por revisor/grupo, no grupo de controle, na concordância entre revisores nem na lista de divergências. As perguntas 1 e 3 continuam valendo.",
+ "pacote": "pkg-1.1",
+ "aprovado_por": "responsável pelo projeto (aprovação registrada na conversa de 2026-11-14)",
+ "gabarito_v0_alterado": false,
+ "ids": [
+  "p1-t6",
+  "p1-t7",
+  "p1-t13",
+  "p1-t16",
+  "p1-t20",
+  "p1-t30",
+  "p1-t32",
+  "p1-t34",
+  "p1-t37",
+  "p6-t18",
+  "p6-t22",
+  "p6-t25",
+  "p6-t31",
+  "p10-t4",
+  "p10-t13",
+  "p10-t14"
+ ],
+ "n": 16,
+ "metodo_de_deteccao": {
+  "cartoes_analisados": 46,
+  "limiar_pixels_azuis": 30,
+  "max_pixels_nos_sem_linha": 0,
+  "min_pixels_nos_com_linha": 86
+ },
+ "itens_selecionados_sha256": "1b0133311d9cae427d90ce6ded4d1609673fb621e58d49cd6b021d5273bb6db0"
+}

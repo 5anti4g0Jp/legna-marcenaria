@@ -31,3 +31,5 @@ class Caminhos:
     def versoes_dir(self): return self.base / "groundtruth" / "versoes"
     @property
     def sintetico_manifest(self): return self.base / "groundtruth" / "synthetic_manifest.json"
+    @property
+    def exclusoes_q2(self): return self.base / "review" / "exclusoes_q2.json"
