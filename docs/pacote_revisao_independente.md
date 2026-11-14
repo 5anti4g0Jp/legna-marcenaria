@@ -46,3 +46,11 @@ Uso interno (NÃO enviar): `pkg-1.1/MANIFESTO_PACOTE.json` (sha `50efd8a1828ba52
 - O PDF é um projeto de cliente: confirmar autorização para compartilhar com o revisor.
 - Os recortes mostram o intervalo candidato do algoritmo (necessário para a pergunta 2); isso pode ancorar o revisor.
 - A ausência de linha azul agora é declarada ao revisor nos 16 itens (inevitável com a instrução pedida).
+
+## Registro de envio (pkg-1.1)
+Log com cadeia de hash: `evaluation/review_package/envios.jsonl` (`evaluation/review_dispatch.py`).
+- 2026-11-14 · **status: preparado_aguardando_envio** (seq 1, hash `c1dafe79…`). Este sistema **não envia** a ninguém; os 3 arquivos foram entregues ao responsável para encaminhar.
+- Para marcar como enviado, uma pessoa confirma com `confirmar_envio(destinatario, canal, enviado_em, confirmado_por)`; só então o status passa a **enviado**.
+- Texto para o revisor (não é anexo): `pkg-1.1/MENSAGEM_AO_REVISOR.md` (sha `55d1a02a…`): primeiro o desenho, depois a medição; "Não sei" para o que não avaliar com segurança.
+- **Retorno**: `validar_retorno` exige os 46 IDs exatos, cabeçalho e pré-preenchimento (página/texto) intactos, `grupos` vazio e as regras do registro; `registrar_retorno` só funciona se o pacote consta como enviado e não resolve nem congela nada.
+- Não enviar: manifesto, `exclusoes_q2.json`, gabarito, baseline, métricas, itens selecionados, folha original e pkg-1.0.
