@@ -49,4 +49,11 @@ describe("regras construtivas", () => {
     expect(p.grainAlong).toBe("w");
     expect(p.origin).toBe("pdf");
   });
+
+  it("aviso da rodabase usa o nome legível do material (não o id interno)", () => {
+    const e = expand({ ...base, rodabase: true, doors: [[396, 700, 2]] });
+    const aviso = e.assumptions.find((a) => a.includes("rodabase"))!;
+    expect(aviso).toContain("MDF Branco 15 mm");
+    expect(aviso).not.toContain("branco15");
+  });
 });
