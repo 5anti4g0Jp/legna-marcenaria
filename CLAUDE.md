@@ -20,11 +20,12 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
   `validate.ts`, `rules.ts` (módulo -> peças), `config.ts` (esquemas + validação), `report.ts`.
 - `projects/fernanda-sertorio/`: projeto de teste real (34 págs, SketchUp LayOut): `build.ts` + `export_xlsx.py`.
 - `evaluation/` (na `main`): baseline/gabarito da Etapa 0, fluxo de revisão independente, pacotes `pkg-1.0`/`pkg-1.1`. `ingest/technical/`: 6 estados e registro de revisões humanas.
-- `config/` (somente na branch `feature/config-estrutura`, NÃO integrada): `catalogo.json`, `precos.json`, `fabricacao.json`.
+- `config/` (na `main` desde o merge 2): `catalogo.json`, `precos.json` (todos de REFERÊNCIA), `fabricacao.json` (padrões ASSUMIDOS). `src/config.ts` valida (zod); `src/rules.ts` lê a config; `build.ts` consome `config/`.
 
-## Estado (atualizado em 2026-11-16, após o merge 1)
-- **`main` = `ccbe4f4`** (merge 1: `etapa2-tecnica` → `main`, fast-forward). Backup do estado anterior: branch `backup/main-pre-merge-2026-11-16` (= `0bd5a5c`).
-  Testes em clone novo: **315 pytest + 27 vitest**, `tsc` ok, `projects/fernanda-sertorio/build.ts` ok (orçamento idêntico ao anterior; preços de REFERÊNCIA).
+## Estado (atualizado em 2026-11-16, após o merge 2)
+- **`main` = `bec2fc5`** (merge 2: `migracao/build-config` → `main`, merge `--no-ff`; veio junto a `feature/config-estrutura`). Merge 1 foi `0bd5a5c` → `ccbe4f4` (fast-forward de `etapa2-tecnica`).
+  Backup anterior aos merges: branch `backup/main-pre-merge-2026-11-16` (= `0bd5a5c`). Ponto anterior ao merge 2: `ccbe4f4` (= topo da `etapa2-tecnica`).
+  Testes em clone novo: **315 pytest + 28 vitest**, `tsc` ok, `projects/fernanda-sertorio/build.ts` ok. Orçamento vs. antes da migração: **0 diferenças numéricas/estruturais**; 7 de texto (aviso da rodabase, justificadas em `docs/migracao_build_config.md`). Preços de REFERÊNCIA.
 - Conteúdo da `main`: Etapa 0 (baseline+gabarito v0 em `evaluation/`), Etapa 1 (`ingest/technical/`), leitores modulares (`ingest/readers/`), cliente Anthropic (`ingest/ai/`, sem chave real),
   Docker validado, fluxo de revisão independente (registro → relatório → resolução → congelamento `rev1`, testado só com respostas SIMULADAS), pacotes de revisão `pkg-1.0` (histórico) e `pkg-1.1`.
 - **Intocáveis:** algoritmo de cotas (`ingest/dimensions.py` = `evaluation/baseline_etapa0/dimensions.py`, sha `696a8b83…`), gabarito v0 (`febda860…`), baseline v0 (`6a2d8446…`), pacotes `pkg-1.0`/`pkg-1.1`.
@@ -32,9 +33,8 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
   A avaliação do ChatGPT (complementar, sem HTML; material em `pkg-1.1/auxiliar/`) NÃO é revisão humana independente. **`rev1` não congelada. Etapa 2 NÃO iniciada.**
 - Gabarito v0: feito pelo assistente, 113 tokens (104 cotas) nas págs 1, 6, 10, SEM revisão independente. Itens sem linha azul (16) excluídos da pergunta 2 (`evaluation/review/exclusoes_q2.json`).
 - **Branches** (nenhuma excluída/arquivada sem aprovação do usuário):
-  - `etapa2-tecnica` = igual à `main`; `ambiente-leitores` e `etapa2-leitura-exata` já estão contidas nela (redundantes).
-  - `feature/config-estrutura` (NÃO integrar sem aprovação): `config/*.json`, `src/config.ts`, `src/rules.ts` refatorado; 27 vitest ok; **quebra o `build.ts`** da main se mesclada sozinha.
-  - `migracao/build-config`: config + `build.ts` migrado, ISOLADA (não mesclada na main). Orçamento: 0 diferenças numéricas, 27 de texto (nomes de 10 materiais e texto de rodabase). Ver `docs/migracao_build_config.md`.
+  - `etapa2-tecnica` (= `ccbe4f4`); `ambiente-leitores` e `etapa2-leitura-exata`: já contidas na `main` (redundantes).
+  - `feature/config-estrutura` e `migracao/build-config`: integradas à `main` pelo merge 2 (redundantes). NÃO integrar `feature/config-estrutura` separadamente (quebra o `build.ts` sem a migração).
   - `fase2/levantamento-dados`: formulário de levantamento da Legna (60 campos + 7 tabelas, `confirmado/pendente/provisorio`), NÃO ligado ao motor.
   - `experimento/pdf-permissivo`: pdfplumber/pdfminer e pypdfium2 alimentando o algoritmo congelado (104 cotas idênticas neste PDF), ISOLADO; PyMuPDF NÃO foi substituído.
   - `backup/main-pre-merge-2026-11-16`: backup da main anterior.
@@ -45,11 +45,11 @@ consumo/compra e gera orçamento. **Prioridade absoluta: precisão do levantamen
 - Todos os preços e a mão de obra são de REFERÊNCIA (inventados pelo assistente, status "referencia"). Nenhum é da Legna.
 
 ## ONDE PARAMOS (ponto de retomada, 2026-11-16)
-Merge 1 concluído e validado. **Merge 2 (`feature/config-estrutura` → `main`) NÃO autorizado**; só a preparação isolada (`migracao/build-config`) foi autorizada e feita.
-Aguardando: (a) CSV do revisor humano; (b) decisão do usuário sobre o merge 2 e sobre os nomes dos materiais/texto de rodabase; (c) PDFs reais Promob/AutoCAD e dados da Legna (formulário);
+Merges 1 e 2 concluídos e validados. Configuração externa e `build.ts` migrado estão na `main`. Falta aprovar a integração deste `CLAUDE.md` (branch `docs/claude-md-pos-merge1`).
+Aguardando: (a) CSV do revisor humano; (b) aprovação da estrutura de configuração (fornecedores, `store.ts`, histórico de preço) e de `fornecedores.json`/`store.ts`/`ai-context.ts`; (c) PDFs reais Promob/AutoCAD e dados da Legna (formulário);
 (d) decisão jurídica PyMuPDF. Não avançar para a Etapa 2, não congelar a `rev1`, não alterar gabarito/baseline/algoritmo.
 
-### Estrutura proposta (aguardando aprovação)
+### Estrutura proposta (parcialmente implementada: `config.ts`, `rules.ts` e os 3 JSON já estão na `main`; faltam `fornecedores.json`, `store.ts`, `ai-context.ts`; sem aprovação formal)
 ```
 config/
   catalogo.json       materiais (MDF/MDP/outros), cores+acabamentos, chapas comerciais, fitas (largura+espessura),
@@ -80,8 +80,8 @@ Um **passo determinístico casa o nome lido com um item do catálogo**. Sem corr
 3. Preço com histórico: só o atual ou também datas anteriores? **Recomendação: só o atual por enquanto.**
 
 ### Ao retomar
-1. Aguardar aprovação do merge 2 (a migração do `build.ts` já está pronta em `migracao/build-config`). 2. Perguntar/confirmar as 3 decisões acima.
-3. Depois: `fornecedores.json`, `store.ts` (+CLI), `ai-context.ts`; folgas/descontos/espessura de fita. 4. Manter os 315 pytest + 27 vitest verdes. 5. Só então Etapa 2 (IA) e Etapas 2-9 da leitura.
+1. Perguntar/confirmar as 3 decisões acima. 2. Depois: `fornecedores.json`, `store.ts` (+CLI), `ai-context.ts`; folgas/descontos/espessura de fita (hoje são padrões ASSUMIDOS, não da Legna).
+3. Ligar o formulário da Fase 2 (`fase2/levantamento-dados`) à config só depois de aprovação. 4. Manter os 315 pytest + 28 vitest verdes. 5. Só então Etapa 2 (IA) e Etapas 2-9 da leitura.
 
 ## Pendências / decisões abertas
 1. Aprovar estrutura de config: fornecedores (um ou vários por item), `store.ts` + CLI, preço sem histórico.
