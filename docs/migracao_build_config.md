@@ -14,10 +14,15 @@
 - `specs.map((s) => expand(s, cfg))`.
 - **Nenhum preço, regra ou valor foi alterado.** `src/rules.ts` não foi tocado nesta branch além do que veio do merge.
 
+## Ajustes aprovados (2026-11-16, antes do merge na `main`)
+1. `config/catalogo.json`: `nome` dos 10 materiais restaurado para o nome comercial anterior (marca + espessura + dimensões, ex.: "MDF Tauari Guararapes 15 mm 2750x1840"), tirado do `prices.json` original. A marca continua também em `marca`. Nenhum preço mudou.
+2. `src/rules.ts`: o aviso da rodabase usa o nome do material no catálogo em vez do id interno (`branco15`). Teste novo em `test/rules.test.ts`.
+
 ## Comparação (antes = `main` `ccbe4f4`, depois = esta branch)
 `python projects/fernanda-sertorio/comparar_orcamentos.py projects/fernanda-sertorio/referencia/orcamento_pre_migracao.json projects/fernanda-sertorio/out/orcamento.json`
-- Referência: `referencia/orcamento_pre_migracao.json` (saída da `main`, com os preços de REFERÊNCIA inventados; não são preços da Legna).
-- Diferenças numéricas/estruturais: **0** (220 linhas de peça, 665 unidades, 56 chapas, 10 planos de corte, ferragens, extras, 5 avisos, orçamento completo).
-- Diferenças só de texto: **27** (ver abaixo). Não foram "corrigidas" para forçar igualdade.
-  - 20: nome de 10 materiais (config: "MDF Tauari 15 mm"; antes: "MDF Tauari Guararapes 15 mm 2750x1840"). A marca está em `marca` no catálogo; o nome composto não foi reconstruído.
-  - 7: texto da premissa de rodabase em `src/rules.ts` ("MDF 15 cru" → "branco15", o id do material).
+- Referência: `referencia/orcamento_pre_migracao.json` (saída da `main`, com preços de REFERÊNCIA inventados; não são da Legna).
+- Diferenças numéricas/estruturais: **0** (220 linhas de peça, 665 unidades, 56 chapas, 10 planos de corte, ferragens, extras, 5 avisos, orçamento completo; custo total R$ 119.195,69, preço sugerido R$ 170.279,56).
+- Diferenças só de texto: **7**, todas no aviso da rodabase, JUSTIFICADAS:
+  - antes: "...estrutura em U assumida em MDF 15 cru."
+  - agora: "...estrutura em U assumida em MDF Branco 15 mm 2750x1840."
+  - motivo: as peças de rodabase usam o material `branco15` (MDF branco), não "cru"; o texto antigo descrevia um material diferente do usado no cálculo. Os nomes dos materiais voltaram a ser idênticos aos de antes.

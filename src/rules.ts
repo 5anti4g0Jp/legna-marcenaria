@@ -124,7 +124,7 @@ export function expand(s: CabSpec, cfg: Config = defaultConfig()): Expanded {
     const r = fab.montagem.rodabase;
     add({ label: "Rodabase frente", kind: "other", materialId: matRoda, w: s.W, h: r.altura, grainAlong: "none" });
     add({ label: "Rodabase lateral", kind: "other", materialId: matRoda, w: Math.max(100, s.D - r.recuoFrente), h: r.altura, grainAlong: "none" }, 2);
-    as.push(`${s.nome}: rodabase ${r.altura} mm montada pela marcenaria (nota do projeto); estrutura em U assumida em ${matRoda}.`);
+    as.push(`${s.nome}: rodabase ${r.altura} mm montada pela marcenaria (nota do projeto); estrutura em U assumida em ${mats.get(matRoda)?.nome ?? matRoda}.`);
   }
   addHw(fab.dobradica.ferragemId, hwName(fab.dobradica.ferragemId), hinges + (s.extraHinges ?? 0));
   const hd = s.handle ?? "none";

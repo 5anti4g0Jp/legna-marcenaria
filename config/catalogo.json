@@ -3,7 +3,7 @@
  "materiais": [
   {
    "id": "tauari15",
-   "nome": "MDF Tauari 15 mm",
+   "nome": "MDF Tauari Guararapes 15 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "amadeirado",
@@ -17,7 +17,7 @@
   },
   {
    "id": "tauari18",
-   "nome": "MDF Tauari 18 mm",
+   "nome": "MDF Tauari Guararapes 18 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "amadeirado",
@@ -31,7 +31,7 @@
   },
   {
    "id": "tauari25",
-   "nome": "MDF Tauari 25 mm",
+   "nome": "MDF Tauari Guararapes 25 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "amadeirado",
@@ -45,7 +45,7 @@
   },
   {
    "id": "areia15",
-   "nome": "MDF Areia 15 mm",
+   "nome": "MDF Areia Guararapes 15 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "matt",
@@ -59,7 +59,7 @@
   },
   {
    "id": "areia18",
-   "nome": "MDF Areia 18 mm",
+   "nome": "MDF Areia Guararapes 18 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "matt",
@@ -73,7 +73,7 @@
   },
   {
    "id": "areia25",
-   "nome": "MDF Areia 25 mm",
+   "nome": "MDF Areia Guararapes 25 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "matt",
@@ -87,7 +87,7 @@
   },
   {
    "id": "tijolo15",
-   "nome": "MDF Tijolo Matt 15 mm",
+   "nome": "MDF Tijolo Matt Guararapes 15 mm 2750x1840",
    "familia": "MDF",
    "marca": "Guararapes",
    "acabamento": "matt",
@@ -101,7 +101,7 @@
   },
   {
    "id": "salvia15",
-   "nome": "MDF Sálvia Matt 15 mm",
+   "nome": "MDF Sálvia Matt Arauco 15 mm 2750x1840",
    "familia": "MDF",
    "marca": "Arauco",
    "acabamento": "matt",
@@ -115,7 +115,7 @@
   },
   {
    "id": "branco15",
-   "nome": "MDF Branco 15 mm",
+   "nome": "MDF Branco 15 mm 2750x1840",
    "familia": "MDF",
    "marca": "(não definida)",
    "acabamento": "liso",
@@ -129,7 +129,7 @@
   },
   {
    "id": "branco6",
-   "nome": "MDF Branco 6 mm",
+   "nome": "MDF Branco 6 mm 2750x1840 (fundos)",
    "familia": "MDF",
    "marca": "(não definida)",
    "acabamento": "liso",
