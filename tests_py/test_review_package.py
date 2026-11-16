@@ -31,8 +31,10 @@ def test_entrega_hashes_conferem(versao, esperado):
 def test_pkg11_conteudo_exato_e_pdf_identico_ao_original():
     assert sorted(p.name for p in PKG11.iterdir()) == sorted([P.HTML_NOME, P.CSV_NOME, P.PDF_NOME])
     assert sha(PKG11 / P.PDF_NOME) == P.PDF_SHA256 and P.inspecionar_pdf(PKG11 / P.PDF_NOME) == []
-    for n in (P.HTML_NOME, P.CSV_NOME, P.PDF_NOME):
-        assert not (PKG11 / n).stat().st_mode & 0o222, n                                # somente leitura
+    # integridade por SHA-256 contra o manifesto E contra constantes esperadas (permissão de arquivo não é versionada pelo git e some em clone novo)
+    esperado = {P.HTML_NOME: "304a89bfe771df1ada823848cd75de9c6fcc4483222535ac96a92a188c9bfd51", P.CSV_NOME: "46892c19a7342cd7d9a0dd07a1aaa8f7fad62565d6e5921d2c6101cc714826ca", P.PDF_NOME: P.PDF_SHA256}
+    man = json.loads((PKG11.parent / "MANIFESTO_PACOTE.json").read_text())["arquivos_entregues"]
+    assert {n: sha(PKG11 / n) for n in esperado} == esperado == {n: m["sha256"] for n, m in man.items()}
     assert "fernanda" not in P.PDF_NOME.lower() and "sertorio" not in P.PDF_NOME.lower()
 
 

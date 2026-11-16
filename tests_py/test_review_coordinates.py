@@ -17,7 +17,9 @@ def test_manifesto_hash_e_arquivos_do_pacote_inalterados():
     assert man["sha256"] == sha(C.AUX / C.CSV_AUX) and man["n_itens"] == 46
     assert sha(ENT / P.CSV_NOME) == "46892c19a7342cd7d9a0dd07a1aaa8f7fad62565d6e5921d2c6101cc714826ca" and sha(ENT / P.PDF_NOME) == P.PDF_SHA256
     assert sorted(p.name for p in ENT.iterdir()) == sorted([P.HTML_NOME, P.CSV_NOME, P.PDF_NOME])           # entrega/ continua com 3 arquivos
-    assert not (C.AUX / C.CSV_AUX).stat().st_mode & 0o222
+    # integridade por SHA-256 (permissão de arquivo não é versionada pelo git e some em clone novo)
+    assert sha(C.AUX / C.CSV_AUX) == "6120ae70cfa9afea891c94d1553c000363348600cae5e99d56ab31e941bd60ba"
+    assert man["arquivos_do_pacote_inalterados"] == {P.HTML_NOME: "304a89bfe771df1ada823848cd75de9c6fcc4483222535ac96a92a188c9bfd51", P.CSV_NOME: "46892c19a7342cd7d9a0dd07a1aaa8f7fad62565d6e5921d2c6101cc714826ca", P.PDF_NOME: P.PDF_SHA256}
 
 
 def test_46_ids_na_ordem_do_csv_com_colunas_e_sem_vazamento():
