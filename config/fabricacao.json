@@ -1,0 +1,118 @@
+{
+ "versao": 1,
+ "_nota": "Padrões de fabricação ASSUMIDOS (nenhum foi confirmado pela Legna). Edite este arquivo; o código não tem valores fixos.",
+ "corte": {
+  "serra": 4,
+  "refilo": 10,
+  "perdaFitaPct": 0.1
+ },
+ "espessuras": {
+  "corpo": 15,
+  "prateleiraGrossa": 25,
+  "fundo": 6,
+  "caixaGaveta": 15,
+  "rodabase": 15
+ },
+ "corInterna": "branco",
+ "montagem": {
+  "portaSobreposta": true,
+  "recuoPrateleira": 20,
+  "travessas": {
+   "altura": 100,
+   "quantidade": 2
+  },
+  "rodabase": {
+   "altura": 150,
+   "recuoFrente": 100
+  }
+ },
+ "fundo": {
+  "tipo": "sobreposto",
+  "folgaLargura": 4,
+  "folgaAltura": 4,
+  "emendarSeMaiorQueChapa": true
+ },
+ "dobradica": {
+  "ferragemId": "hinge",
+  "porAltura": [
+   {
+    "alturaMax": 900,
+    "qtd": 2
+   },
+   {
+    "alturaMax": 1600,
+    "qtd": 3
+   },
+   {
+    "alturaMax": 2000,
+    "qtd": 4
+   },
+   {
+    "alturaMax": null,
+    "qtd": 5
+   }
+  ]
+ },
+ "corredica": {
+  "ferragemId": "slide",
+  "comprimentos": [
+   250,
+   300,
+   350,
+   400,
+   450,
+   500,
+   550
+  ],
+  "folgaTraseira": 50,
+  "alturaCaixaMenosFrente": 50,
+  "alturaCaixaMin": 80,
+  "larguraCaixaMenosFrente": 40
+ },
+ "pinoPrateleira": {
+  "ferragemId": "shelf-pin",
+  "porPrateleiraRegulavel": 4
+ },
+ "fitaPorTipo": {
+  "porta": [
+   "w1",
+   "w2",
+   "h1",
+   "h2"
+  ],
+  "frenteGaveta": [
+   "w1",
+   "w2",
+   "h1",
+   "h2"
+  ],
+  "lateral": [
+   "h1"
+  ],
+  "base": [
+   "w1"
+  ],
+  "topo": [
+   "w1"
+  ],
+  "prateleira": [
+   "w1"
+  ],
+  "divisoria": [
+   "h1"
+  ],
+  "lateralGaveta": [
+   "w1"
+  ]
+ },
+ "veioMadeira": {
+  "porta": "h",
+  "frenteGaveta": "w",
+  "lateral": "h",
+  "divisoria": "h",
+  "base": "w",
+  "topo": "w",
+  "prateleira": "w",
+  "travessa": "w"
+ }
+}
