@@ -1,0 +1,151 @@
+{
+ "_aviso": "PREÇOS DE REFERÊNCIA (status 'referencia'): estimados pelo assistente, NÃO são da Legna nem de fornecedor. Substitua pelos valores reais e mude status para 'confirmado'.",
+ "versao": 1,
+ "materiais": {
+  "tauari15": {
+   "preco": 380,
+   "status": "referencia"
+  },
+  "tauari18": {
+   "preco": 440,
+   "status": "referencia"
+  },
+  "tauari25": {
+   "preco": 690,
+   "status": "referencia"
+  },
+  "areia15": {
+   "preco": 330,
+   "status": "referencia"
+  },
+  "areia18": {
+   "preco": 380,
+   "status": "referencia"
+  },
+  "areia25": {
+   "preco": 600,
+   "status": "referencia"
+  },
+  "tijolo15": {
+   "preco": 400,
+   "status": "referencia"
+  },
+  "salvia15": {
+   "preco": 420,
+   "status": "referencia"
+  },
+  "branco15": {
+   "preco": 260,
+   "status": "referencia"
+  },
+  "branco6": {
+   "preco": 110,
+   "status": "referencia"
+  }
+ },
+ "fitas": {
+  "fita-tauari": {
+   "preco": 3.2,
+   "status": "referencia"
+  },
+  "fita-areia": {
+   "preco": 3.2,
+   "status": "referencia"
+  },
+  "fita-tijolo": {
+   "preco": 3.2,
+   "status": "referencia"
+  },
+  "fita-salvia": {
+   "preco": 3.2,
+   "status": "referencia"
+  },
+  "fita-branco": {
+   "preco": 2.4,
+   "status": "referencia"
+  }
+ },
+ "ferragens": {
+  "hinge": {
+   "preco": 14,
+   "status": "referencia"
+  },
+  "slide": {
+   "preco": 38,
+   "status": "referencia"
+  },
+  "handle-sinnai": {
+   "preco": 28,
+   "status": "referencia"
+  },
+  "handle-travertino": {
+   "preco": 55,
+   "status": "referencia"
+  },
+  "shelf-pin": {
+   "preco": 0.6,
+   "status": "referencia"
+  }
+ },
+ "extras": {
+  "vidro-canelado": {
+   "preco": 750,
+   "status": "referencia"
+  },
+  "espelho-cristal": {
+   "preco": 320,
+   "status": "referencia"
+  },
+  "estrutura-espelho": {
+   "preco": 380,
+   "status": "referencia"
+  },
+  "sistema-correr": {
+   "preco": 480,
+   "status": "referencia"
+  },
+  "palhinha": {
+   "preco": 180,
+   "status": "referencia"
+  },
+  "led": {
+   "preco": 70,
+   "status": "referencia"
+  },
+  "spot": {
+   "preco": 38,
+   "status": "referencia"
+  },
+  "pezinho": {
+   "preco": 45,
+   "status": "referencia"
+  },
+  "ripado": {
+   "preco": 380,
+   "status": "referencia"
+  },
+  "cnc-oval": {
+   "preco": 60,
+   "status": "referencia"
+  },
+  "calha": {
+   "preco": 120,
+   "status": "referencia"
+  },
+  "estofado": {
+   "preco": 90,
+   "status": "referencia"
+  },
+  "puxador-madeira": {
+   "preco": 25,
+   "status": "referencia"
+  }
+ },
+ "custos": {
+  "maoDeObraPorM2": 420,
+  "custosExtras": 0,
+  "indiretosPct": 0.12,
+  "margemPct": 0.3,
+  "status": "referencia"
+ }
+}
