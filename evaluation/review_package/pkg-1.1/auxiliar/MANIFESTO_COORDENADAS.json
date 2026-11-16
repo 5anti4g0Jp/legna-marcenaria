@@ -1,0 +1,43 @@
+{
+ "arquivo": "legna_revisao_pkg-1.1_coordenadas.csv",
+ "sha256": "6120ae70cfa9afea891c94d1553c000363348600cae5e99d56ab31e941bd60ba",
+ "bytes": 4047,
+ "gerado_em": "2026-11-16",
+ "n_itens": 46,
+ "pacote": "pkg-1.1",
+ "sistema_de_coordenadas": "Unidade: pontos PDF (1 pt = 1/72 in). Origem no canto SUPERIOR ESQUERDO da página; x cresce para a direita, y para baixo (convenção PyMuPDF, página não rotacionada). Caixa = (x0,y0)-(x1,y1) do texto do número. rotacao_graus: 0 = horizontal; 90 = lido de baixo para cima. pos_*_pct = centro / tamanho da página.",
+ "colunas": [
+  "id",
+  "pagina",
+  "texto",
+  "x0",
+  "y0",
+  "x1",
+  "y1",
+  "centro_x",
+  "centro_y",
+  "rotacao_graus",
+  "pagina_largura_pt",
+  "pagina_altura_pt",
+  "pos_x_pct",
+  "pos_y_pct",
+  "texto_da_linha"
+ ],
+ "fonte": "recalculado do PDF original pelo extrator de tokens da Etapa 0 (census); conferido contra o texto do PDF na caixa e contra o CSV do pacote (id, página, texto)",
+ "nao_contem": [
+  "gabarito v0",
+  "baseline",
+  "estado/resultado do algoritmo",
+  "intervalo medido",
+  "rótulos ou respostas esperadas"
+ ],
+ "entradas": {
+  "pdf_sha256": "bb6385f7eac3d67d5c6303a3033beb5340577b1af3bef1cfac1e2a77c0dd83dc",
+  "csv_pacote_sha256": "46892c19a7342cd7d9a0dd07a1aaa8f7fad62565d6e5921d2c6101cc714826ca"
+ },
+ "arquivos_do_pacote_inalterados": {
+  "legna_revisao_pkg-1.1_respostas.csv": "46892c19a7342cd7d9a0dd07a1aaa8f7fad62565d6e5921d2c6101cc714826ca",
+  "legna_revisao_pkg-1.1_projeto_referencia.pdf": "bb6385f7eac3d67d5c6303a3033beb5340577b1af3bef1cfac1e2a77c0dd83dc",
+  "legna_revisao_pkg-1.1_folha.html": "304a89bfe771df1ada823848cd75de9c6fcc4483222535ac96a92a188c9bfd51"
+ }
+}

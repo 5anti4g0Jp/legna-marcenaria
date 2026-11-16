@@ -54,3 +54,9 @@ Log com cadeia de hash: `evaluation/review_package/envios.jsonl` (`evaluation/re
 - Texto para o revisor (não é anexo): `pkg-1.1/MENSAGEM_AO_REVISOR.md` (sha `55d1a02a…`): primeiro o desenho, depois a medição; "Não sei" para o que não avaliar com segurança.
 - **Retorno**: `validar_retorno` exige os 46 IDs exatos, cabeçalho e pré-preenchimento (página/texto) intactos, `grupos` vazio e as regras do registro; `registrar_retorno` só funciona se o pacote consta como enviado e não resolve nem congela nada.
 - Não enviar: manifesto, `exclusoes_q2.json`, gabarito, baseline, métricas, itens selecionados, folha original e pkg-1.0.
+
+## Avaliação complementar por IA (sem HTML) — material auxiliar
+Decisão do responsável (2026-11-16): HTML fora desta etapa; escopo = pergunta 1 (papel) e pergunta 3 (valor); pergunta 2 fora de escopo. **Não é revisão humana independente** e não altera gabarito, baseline, revisão humana nem rev1.
+- `pkg-1.1/auxiliar/legna_revisao_pkg-1.1_coordenadas.csv` + `MANIFESTO_COORDENADAS.json` (`evaluation/review_coordinates.py`): id, página, caixa em pt, rotação, tamanho da página, linha de texto do PDF. Recalculado do PDF pelo extrator da Etapa 0; sem gabarito, baseline, estado do algoritmo ou intervalo medido. `entrega/` continua com 3 arquivos inalterados.
+- `pkg-1.1/INSTRUCOES_AVALIACAO_COMPLEMENTAR_IA.md`: texto para o avaliador (correto/incorreto/indeterminado, evidência com página e coordenadas, limitações, sem inventar medidas).
+- O retorno será guardado em registro separado, rotulado "IA, avaliação complementar".
