@@ -1,9 +1,28 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { run } from "../../src/engine.js";
-import { custom, expand, type CabSpec, type Custom, type Extra } from "../../src/rules.js";
+import { custom, defaultConfig, expand, type CabSpec, type Custom, type Extra } from "../../src/rules.js";
 import type { ExtraItem, HardwareItem, Material, Piece, Project } from "../../src/types.js";
 
-const prices = JSON.parse(readFileSync(new URL("./prices.json", import.meta.url), "utf8"));
+// ---------- configuração (config/catalogo.json, precos.json, fabricacao.json) ----------
+// Preços e padrões vêm da configuração externa. Item sem preço cadastrado NÃO é inventado: interrompe.
+const cfg = defaultConfig();
+const { catalogo: cat, precos: pr, fabricacao: fab } = cfg;
+type Tabela = "materiais" | "fitas" | "ferragens" | "extras";
+const precoDe = (t: Tabela, id: string): number => {
+  const e = (pr as unknown as Record<Tabela, Record<string, { preco: number | null }>>)[t][id];
+  if (!e || e.preco === null) throw new Error(`preço pendente na configuração: ${t}/${id}`);
+  return e.preco;
+};
+const statusDe = (t: Tabela, id: string) => (pr as unknown as Record<Tabela, Record<string, { status: string }>>)[t][id].status;
+// Visão no formato usado por este script (e gravada em out/orcamento.json), derivada da configuração.
+const prices = {
+  _aviso: (pr as unknown as { _aviso?: string })._aviso,
+  materials: Object.fromEntries(cat.materiais.map((m) => [m.id, { name: m.nome, price: precoDe("materiais", m.id), status: statusDe("materiais", m.id) }])),
+  bands: Object.fromEntries(cat.fitas.map((f) => [f.id, { name: f.nome, price: precoDe("fitas", f.id), status: statusDe("fitas", f.id) }])),
+  hardware: Object.fromEntries(cat.ferragens.map((f) => [f.id, { name: f.nome, price: precoDe("ferragens", f.id), status: statusDe("ferragens", f.id) }])),
+  extras: Object.fromEntries(cat.extras.map((x) => [x.id, { name: x.nome, unit: x.unidade, price: precoDe("extras", x.id), status: statusDe("extras", x.id) }])),
+  cost: { laborPerSqm: pr.custos.maoDeObraPorM2, extraCosts: pr.custos.custosExtras, overheadPct: pr.custos.indiretosPct, marginPct: pr.custos.margemPct, status: pr.custos.status },
+};
 const X = (id: string, qty: number, origin: "pdf" | "regra" = "pdf"): Extra => ({ id, name: prices.extras[id].name, qty: Math.round(qty * 1000) / 1000, unit: prices.extras[id].unit, origin });
 const m2 = (w: number, h: number, n = 1) => (w * h * n) / 1e6;
 const mod = (id: string, nome: string, src: string, W: number, H: number, D: number) => ({ id, nome, src, W, H, D });
@@ -143,17 +162,16 @@ const customHardware: { id: string; qty: number }[] = [
 ];
 
 // ---------- monta projeto ----------
-const expanded = specs.map(expand);
+const expanded = specs.map((s) => expand(s, cfg))   // expand(spec, config): não passar direto ao map (o índice viraria `cfg`);
 const pieces: Piece[] = [...expanded.flatMap((e) => e.pieces), ...customs];
 const allExtras = [...expanded.flatMap((e) => e.extras), ...customExtras];
 const hwMap = new Map<string, { name: string; qty: number }>();
 for (const e of expanded) for (const h of e.hardware) { const k = h.id.startsWith("slide-") ? "slide" : h.id; hwMap.set(k, { name: prices.hardware[k]?.name ?? h.name, qty: (hwMap.get(k)?.qty ?? 0) + h.qty }); }
 for (const c of customHardware) hwMap.set(c.id, { name: prices.hardware[c.id].name, qty: (hwMap.get(c.id)?.qty ?? 0) + c.qty });
 
-const materials: Material[] = Object.entries(prices.materials).map(([id, v]: any) => {
-  const t = Number(id.match(/(\d+)$/)![1]);
-  return { id, name: v.name, thickness: t, sheetLength: 2750, sheetWidth: 1840, pricePerSheet: v.price, hasGrain: id.startsWith("tauari") };
-});
+const materials: Material[] = cat.materiais.map((m) => ({
+  id: m.id, name: prices.materials[m.id].name, thickness: m.espessura, sheetLength: m.chapa.comprimento, sheetWidth: m.chapa.largura, pricePerSheet: prices.materials[m.id].price, hasGrain: m.veio,
+}));
 const edgeBands = Object.entries(prices.bands).map(([id, v]: any) => ({ id, name: v.name, pricePerMeter: v.price }));
 const hardware: HardwareItem[] = [...hwMap.entries()].map(([id, v]) => ({ id, name: v.name, qty: v.qty, unitPrice: prices.hardware[id].price, derived: true }));
 const extrasAgg = new Map<string, ExtraItem>();
@@ -174,7 +192,8 @@ const assumptions = [
 const project: Project = { name: "Marcela e Gustavo - Detalhamento de marcenaria (Fernanda Sertório)", materials, edgeBands, pieces, hardware, extras: [...extrasAgg.values()], derivedHardware: true, assumptions } as Project & { derivedHardware: boolean };
 
 const c = prices.cost;
-const report = run(project, { laborPerSqm: c.laborPerSqm, extraCosts: c.extraCosts, overheadPct: c.overheadPct, marginPct: c.marginPct });
+const report = run(project, { laborPerSqm: c.laborPerSqm, extraCosts: c.extraCosts, overheadPct: c.overheadPct, marginPct: c.marginPct },
+  { kerf: fab.corte.serra, trim: fab.corte.refilo, edgeWastePct: fab.corte.perdaFitaPct });
 mkdirSync(new URL("./out/", import.meta.url), { recursive: true });
 writeFileSync(new URL("./out/orcamento.json", import.meta.url), JSON.stringify({ project, report, prices }, null, 1));
 const b = report.budget;
