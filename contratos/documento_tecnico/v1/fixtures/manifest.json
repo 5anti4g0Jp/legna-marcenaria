@@ -1,0 +1,260 @@
+{
+ "aviso": "Fixtures derivadas do exemplo FICTÍCIO. esperado_ts=null: regra verificada só pelo validador Python (fonte única).",
+ "casos": [
+  {
+   "arquivo": "fixtures/invalidos/estado_diverge_do_historico.json",
+   "descricao": "estado declarado difere do destino da última transição",
+   "modo": "teste",
+   "esperado_python": [
+    "E-ESTADO-HIST"
+   ],
+   "esperado_ts": [
+    "E-ESTADO-HIST"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/aprovado_sem_revisao_humana.json",
+   "descricao": "aprovado sem registro de revisão",
+   "modo": "teste",
+   "esperado_python": [
+    "E-APROV-HUMANO"
+   ],
+   "esperado_ts": [
+    "E-APROV-HUMANO"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/aprovado_por_sistema.json",
+   "descricao": "última transição para aprovado feita por ator sistema",
+   "modo": "teste",
+   "esperado_python": [
+    "E-TRANSICAO",
+    "E-APROV-AUTO"
+   ],
+   "esperado_ts": [
+    "E-APROV-AUTO"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/transicao_proibida.json",
+   "descricao": "extraido->pendente->extraido (fora da tabela PERMITIDAS)",
+   "modo": "teste",
+   "esperado_python": [
+    "E-TRANSICAO"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/ocr_sem_confianca.json",
+   "descricao": "item de OCR sem confiança",
+   "modo": "teste",
+   "esperado_python": [
+    "E-OCR-CONF"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/material_sem_pendencia_de_espessura.json",
+   "descricao": "espessura ausente sem pendência (preenchimento silencioso)",
+   "modo": "teste",
+   "esperado_python": [
+    "E-ESPESSURA"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/espessura_sem_fonte.json",
+   "descricao": "espessura informada sem fonte (não existe 'assumida')",
+   "modo": "teste",
+   "esperado_python": [
+    "E-ESPESSURA"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/porta_sem_ferragem_nem_pendencia.json",
+   "descricao": "porta sem dobradiça e sem pendência",
+   "modo": "teste",
+   "esperado_python": [
+    "E-FERRAGEM-PEND"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/conflito_sem_entrada.json",
+   "descricao": "itens em conflito sem registro em `conflitos`",
+   "modo": "teste",
+   "esperado_python": [
+    "E-CONFLITO-ENTRADA"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/dois_aprovados_mesma_chave.json",
+   "descricao": "valores diferentes para a mesma entidade, ambos aprovados",
+   "modo": "teste",
+   "esperado_python": [
+    "E-CONFLITO-APROV"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/versao_major_incompativel.json",
+   "descricao": "contrato 2.0.0",
+   "modo": "teste",
+   "esperado_python": [
+    "E-VERSAO"
+   ],
+   "esperado_ts": [
+    "E-VERSAO"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/campo_obrigatorio_ausente.json",
+   "descricao": "documento.sha256 ausente",
+   "modo": "teste",
+   "esperado_python": [
+    "E-SCHEMA"
+   ],
+   "esperado_ts": [
+    "E-SCHEMA"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/conteudo_alterado_apos_hash.json",
+   "descricao": "texto de um item alterado sem recalcular o hash",
+   "modo": "teste",
+   "esperado_python": [
+    "E-HASH"
+   ],
+   "esperado_ts": [
+    "E-HASH"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/resumo_incorreto.json",
+   "descricao": "resumo não bate com os itens",
+   "modo": "teste",
+   "esperado_python": [
+    "E-RESUMO"
+   ],
+   "esperado_ts": [
+    "E-RESUMO"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/aprovacao_automatica_no_resumo.json",
+   "descricao": "resumo.aprovadas_automaticamente = 1",
+   "modo": "teste",
+   "esperado_python": [
+    "E-SCHEMA"
+   ],
+   "esperado_ts": [
+    "E-SCHEMA"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/id_duplicado.json",
+   "descricao": "dois itens com o mesmo id",
+   "modo": "teste",
+   "esperado_python": [
+    "E-ID-DUP"
+   ],
+   "esperado_ts": [
+    "E-ID-DUP"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/sugerido_aprovado_sem_valor_confirmado.json",
+   "descricao": "material sugerido aprovado sem valor confirmado pela pessoa",
+   "modo": "teste",
+   "esperado_python": [
+    "E-NAT-REV"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/inferido_sem_evidencia_geometrica.json",
+   "descricao": "quantidade inferida sem evidência de geometria com coordenadas",
+   "modo": "teste",
+   "esperado_python": [
+    "E-INFERIDA-EVID"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/unidade_assumida_em_item_aprovado.json",
+   "descricao": "item aprovado com unidade assumida",
+   "modo": "teste",
+   "esperado_python": [
+    "E-UNIDADE"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/pendencia_com_campo_desconhecido.json",
+   "descricao": "campo_legna fora do registro",
+   "modo": "teste",
+   "esperado_python": [
+    "E-PEND-CAMPO"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/elegibilidade_inconsistente.json",
+   "descricao": "pronto_para_calculo=true com pendências abertas",
+   "modo": "teste",
+   "esperado_python": [
+    "E-ELEG"
+   ],
+   "esperado_ts": [
+    "E-ELEG"
+   ]
+  },
+  {
+   "arquivo": "fixtures/invalidos/pendencia_critica_rebaixada.json",
+   "descricao": "pendência que bloqueia cálculo marcada como 'nenhum'",
+   "modo": "teste",
+   "esperado_python": [
+    "E-PEND-BLOQ"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/pagina_com_cotas_sem_pendencia_de_unidade.json",
+   "descricao": "página sem unidade declarada e sem pendência",
+   "modo": "teste",
+   "esperado_python": [
+    "E-UNIDADE"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/ocr_sem_pendencia_de_revisao.json",
+   "descricao": "item de OCR não aprovado sem pendência",
+   "modo": "teste",
+   "esperado_python": [
+    "E-PEND-REVISAO"
+   ],
+   "esperado_ts": null
+  },
+  {
+   "arquivo": "fixtures/invalidos/campo_desconhecido_na_versao_atual.json",
+   "descricao": "campo extra em 1.0.0 é recusado",
+   "modo": "teste",
+   "esperado_python": [
+    "E-SCHEMA"
+   ],
+   "esperado_ts": [
+    "E-SCHEMA"
+   ]
+  },
+  {
+   "arquivo": "fixtures/validos/minor_mais_novo_com_campo_extra.json",
+   "descricao": "1.1.0 com campo extra: aceito com aviso A-VERSAO-MINOR",
+   "modo": "teste",
+   "esperado_python": [],
+   "esperado_ts": []
+  }
+ ]
+}

@@ -1,0 +1,1419 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://legna.local/contratos/documento_tecnico/1.0.0/schema.json",
+ "title": "documento_tecnico 1.0.0",
+ "$defs": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z][a-z0-9_.:-]{0,79}$",
+   "description": "Identificador estável dentro do documento."
+  },
+  "semver": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$"
+  },
+  "sha256": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "datahora": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$",
+   "description": "ISO 8601 com fuso (ex.: 2026-11-17T12:00:00+00:00)."
+  },
+  "bbox": {
+   "type": "array",
+   "items": {
+    "type": "number"
+   },
+   "minItems": 4,
+   "maxItems": 4,
+   "description": "x0,y0,x1,y1 em pontos PDF; origem no canto superior esquerdo da página."
+  },
+  "estado": {
+   "enum": [
+    "extraido",
+    "geometricamente_consistente",
+    "conflito",
+    "sem_medicao",
+    "pendente_revisao",
+    "aprovado"
+   ],
+   "description": "Mesmos seis estados da máquina de estados Python (ingest/technical/model.py). Este contrato NÃO define transições: a tabela PERMITIDAS do Python é a única fonte."
+  },
+  "ator": {
+   "type": "object",
+   "properties": {
+    "tipo": {
+     "enum": [
+      "sistema",
+      "humano"
+     ]
+    },
+    "id": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "tipo",
+    "id"
+   ]
+  },
+  "transicao": {
+   "type": "object",
+   "properties": {
+    "de": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/estado"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "para": {
+     "$ref": "#/$defs/estado"
+    },
+    "ator": {
+     "$ref": "#/$defs/ator"
+    },
+    "em": {
+     "$ref": "#/$defs/datahora"
+    },
+    "motivo": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "de",
+    "para",
+    "ator",
+    "em",
+    "motivo"
+   ]
+  },
+  "evidencia": {
+   "type": "object",
+   "properties": {
+    "tipo": {
+     "enum": [
+      "leitura",
+      "unidade",
+      "geometria",
+      "conflito_geometrico",
+      "sem_medicao",
+      "orientacao",
+      "revisao_humana",
+      "observacao",
+      "ocr",
+      "relacao_paginas",
+      "quantidade_inferida"
+     ]
+    },
+    "descricao": {
+     "type": "string",
+     "minLength": 1
+    },
+    "metodo": {
+     "type": "string",
+     "minLength": 1
+    },
+    "dados": {
+     "type": "object"
+    },
+    "pagina": {
+     "anyOf": [
+      {
+       "type": "integer",
+       "minimum": 1
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "coords": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/bbox"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "tipo",
+    "descricao",
+    "metodo"
+   ]
+  },
+  "revisao": {
+   "type": "object",
+   "properties": {
+    "revisor": {
+     "type": "string",
+     "minLength": 1
+    },
+    "decisao": {
+     "enum": [
+      "aprovado",
+      "rejeitado"
+     ]
+    },
+    "em": {
+     "$ref": "#/$defs/datahora"
+    },
+    "observacao": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "valor_confirmado": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "revisor",
+    "decisao",
+    "em"
+   ],
+   "description": "Decisão humana. `valor_confirmado` é o valor que a pessoa confirma (pode diferir do texto lido)."
+  },
+  "analise_automatica": {
+   "type": "object",
+   "properties": {
+    "estado": {
+     "$ref": "#/$defs/estado"
+    },
+    "estado_algoritmo": {
+     "type": "string"
+    },
+    "algoritmo_sha256": {
+     "$ref": "#/$defs/sha256"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "estado",
+    "estado_algoritmo",
+    "algoritmo_sha256"
+   ],
+   "description": "O que o algoritmo concluiu. Nunca é apagada por decisão humana."
+  },
+  "origem": {
+   "type": "object",
+   "properties": {
+    "metodo_extracao": {
+     "enum": [
+      "camada_texto",
+      "ocr",
+      "geometria_vetorial",
+      "inferencia_geometrica",
+      "entrada_humana",
+      "regra_configuracao"
+     ]
+    },
+    "ocr": {
+     "anyOf": [
+      {
+       "type": "object",
+       "properties": {
+        "motor": {
+         "type": "string",
+         "minLength": 1
+        },
+        "versao": {
+         "anyOf": [
+          {
+           "type": "string"
+          },
+          {
+           "type": "null"
+          }
+         ]
+        },
+        "confianca": {
+         "anyOf": [
+          {
+           "type": "number",
+           "minimum": 0,
+           "maximum": 1
+          },
+          {
+           "type": "null"
+          }
+         ]
+        }
+       },
+       "additionalProperties": false,
+       "required": [
+        "motor"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "metodo_extracao"
+   ]
+  },
+  "relacao": {
+   "type": "object",
+   "properties": {
+    "tipo": {
+     "enum": [
+      "pertence_ao_modulo",
+      "aparece_na_vista",
+      "mede_componente",
+      "descreve",
+      "usa_ferragem",
+      "usa_material",
+      "quantidade_de",
+      "mesma_entidade_que",
+      "pagina_par_de"
+     ]
+    },
+    "alvo_id": {
+     "$ref": "#/$defs/id"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "tipo",
+    "alvo_id"
+   ]
+  },
+  "valor": {
+   "type": "object",
+   "properties": {
+    "numero": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "texto": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "unidade": {
+     "anyOf": [
+      {
+       "enum": [
+        "mm",
+        "cm",
+        "m",
+        "un",
+        "m2",
+        "outra"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "unidade_fonte": {
+     "enum": [
+      "declarada_na_pagina",
+      "declarada_no_item",
+      "assumida",
+      "desconhecida",
+      "nao_se_aplica"
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "unidade_fonte"
+   ],
+   "description": "`numero` é o valor normalizado na `unidade` informada. Unidade assumida ou desconhecida nunca vira dado aprovado sem revisão humana."
+  },
+  "atributos": {
+   "type": "object",
+   "properties": {
+    "espessura_mm": {
+     "anyOf": [
+      {
+       "type": "number",
+       "exclusiveMinimum": 0
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "espessura_fonte": {
+     "enum": [
+      "declarada_no_documento",
+      "cota_candidata",
+      "confirmada_pelo_formulario_legna",
+      "confirmada_pelo_revisor"
+     ],
+     "description": "Não existe 'assumida': espessura ausente fica nula e gera pendência."
+    },
+    "acabamento": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "marca_linha": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "modelo": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "categoria": {
+     "enum": [
+      "porta",
+      "gaveta",
+      "prateleira",
+      "divisoria",
+      "sapateira",
+      "fundo",
+      "lateral",
+      "base",
+      "topo",
+      "rodabase",
+      "painel",
+      "outro"
+     ]
+    },
+    "quantidade_item_id": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/id"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "quantidade": {
+     "anyOf": [
+      {
+       "type": "integer",
+       "minimum": 0
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "description": "Atributos conforme `tipo`. Chaves não listadas são recusadas na v1."
+  },
+  "item": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "tipo": {
+     "enum": [
+      "cota",
+      "nota",
+      "rotulo_componente",
+      "material",
+      "acabamento",
+      "ferragem",
+      "acessorio",
+      "quantidade",
+      "observacao_producao",
+      "declaracao_unidade",
+      "marcador_nao_preenchido"
+     ]
+    },
+    "pagina": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "coords": {
+     "$ref": "#/$defs/bbox"
+    },
+    "texto_original": {
+     "type": "string",
+     "description": "Exatamente como aparece no documento."
+    },
+    "valor": {
+     "$ref": "#/$defs/valor"
+    },
+    "orientacao": {
+     "enum": [
+      "horizontal",
+      "vertical",
+      "inclinada",
+      "desconhecida"
+     ]
+    },
+    "angulo_graus": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "origem": {
+     "$ref": "#/$defs/origem"
+    },
+    "confianca": {
+     "anyOf": [
+      {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "natureza": {
+     "enum": [
+      "explicita",
+      "sugerida",
+      "inferida"
+     ],
+     "description": "explicita = escrita no documento; sugerida = marcada como sugestão (ex.: 'MDF SUGERIDO'); inferida = deduzida (geometria/contagem). Sugerida e inferida exigem revisão humana antes de alimentar o cálculo."
+    },
+    "chave_semantica": {
+     "anyOf": [
+      {
+       "type": "string",
+       "pattern": "^[a-z0-9_.:-]+$",
+       "description": "Entidade que o item descreve (ex.: modulo:m1.profundidade). Itens com a mesma chave e valores diferentes são conflito."
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "atributos": {
+     "$ref": "#/$defs/atributos"
+    },
+    "relacoes": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/relacao"
+     }
+    },
+    "analise_automatica": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/analise_automatica"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "evidencias": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/evidencia"
+     },
+     "minItems": 1
+    },
+    "conflitos": {
+     "type": "array",
+     "items": {
+      "type": "object"
+     }
+    },
+    "estado": {
+     "$ref": "#/$defs/estado"
+    },
+    "historico": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/transicao"
+     },
+     "minItems": 1
+    },
+    "revisao": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/revisao"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "tipo",
+    "pagina",
+    "coords",
+    "texto_original",
+    "valor",
+    "origem",
+    "natureza",
+    "estado",
+    "historico",
+    "evidencias"
+   ]
+  },
+  "pagina": {
+   "type": "object",
+   "properties": {
+    "numero": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "largura_pt": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "altura_pt": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "rotacao": {
+     "enum": [
+      0,
+      90,
+      180,
+      270
+     ]
+    },
+    "tipo": {
+     "enum": [
+      "desenho_tecnico",
+      "ficha",
+      "capa",
+      "outro",
+      "indeterminado"
+     ]
+    },
+    "origem_texto": {
+     "enum": [
+      "camada_texto",
+      "ocr",
+      "mista",
+      "nenhuma"
+     ]
+    },
+    "n_vetores": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "n_imagens": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "titulo_detectado": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "unidade_declarada": {
+     "anyOf": [
+      {
+       "enum": [
+        "mm",
+        "cm",
+        "m"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "unidade_declarada_item_id": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/id"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "par_de": {
+     "type": "array",
+     "items": {
+      "type": "integer",
+      "minimum": 1
+     }
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "numero",
+    "largura_pt",
+    "altura_pt",
+    "rotacao",
+    "tipo",
+    "origem_texto",
+    "n_vetores",
+    "n_imagens"
+   ]
+  },
+  "vista": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "pagina": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "tipo": {
+     "enum": [
+      "frontal",
+      "lateral",
+      "superior",
+      "corte",
+      "detalhe",
+      "planta",
+      "indeterminado"
+     ]
+    },
+    "nome": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "bbox": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/bbox"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "escala_mm_por_pt": {
+     "anyOf": [
+      {
+       "type": "number",
+       "exclusiveMinimum": 0
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "estado": {
+     "$ref": "#/$defs/estado"
+    },
+    "evidencias": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/evidencia"
+     }
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "pagina",
+    "tipo",
+    "estado"
+   ],
+   "description": "A v1 permite tipo 'indeterminado': a interpretação de vistas ainda não existe."
+  },
+  "modulo": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "nome": {
+     "type": "string",
+     "minLength": 1
+    },
+    "paginas": {
+     "type": "array",
+     "items": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "minItems": 1
+    },
+    "vista_ids": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/id"
+     }
+    },
+    "item_ids": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/id"
+     }
+    },
+    "dimensoes": {
+     "type": "object",
+     "properties": {
+      "largura_item_id": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/id"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "altura_item_id": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/id"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "profundidade_item_id": {
+       "anyOf": [
+        {
+         "$ref": "#/$defs/id"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "largura_item_id",
+      "altura_item_id",
+      "profundidade_item_id"
+     ]
+    },
+    "origem": {
+     "enum": [
+      "rotulo_do_documento",
+      "revisao_humana",
+      "geometria_vetorial"
+     ]
+    },
+    "estado": {
+     "$ref": "#/$defs/estado"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "nome",
+    "paginas",
+    "dimensoes",
+    "origem",
+    "estado"
+   ]
+  },
+  "pendencia": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "campo_legna": {
+     "anyOf": [
+      {
+       "type": "string",
+       "minLength": 1,
+       "description": "id em campos_dependentes_legna.json; nulo só para pendências de revisão (conflito, inferido_sem_revisao, ocr_sem_revisao)"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "tipo": {
+     "enum": [
+      "ausente_no_pdf",
+      "nao_confirmado",
+      "conflito",
+      "inferido_sem_revisao",
+      "unidade_nao_declarada",
+      "ocr_sem_revisao",
+      "sugerido_sem_confirmacao"
+     ]
+    },
+    "descricao": {
+     "type": "string",
+     "minLength": 1
+    },
+    "bloqueia": {
+     "enum": [
+      "nenhum",
+      "calculo",
+      "orcamento"
+     ]
+    },
+    "item_ids": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/id"
+     }
+    },
+    "modulo_id": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/id"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "pagina": {
+     "anyOf": [
+      {
+       "type": "integer",
+       "minimum": 1
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "campo_legna",
+    "tipo",
+    "descricao",
+    "bloqueia",
+    "item_ids"
+   ],
+   "description": "Derivada pelo leitor Python. Pendências resolvidas desaparecem; o histórico fica nos itens."
+  },
+  "conflito": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "chave_semantica": {
+     "type": "string",
+     "minLength": 1
+    },
+    "item_ids": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/id"
+     },
+     "minItems": 2
+    },
+    "descricao": {
+     "type": "string",
+     "minLength": 1
+    },
+    "estado": {
+     "enum": [
+      "aberto",
+      "resolvido"
+     ]
+    },
+    "resolucao": {
+     "anyOf": [
+      {
+       "type": "object",
+       "properties": {
+        "revisor": {
+         "type": "string",
+         "minLength": 1
+        },
+        "item_id_vencedor": {
+         "$ref": "#/$defs/id"
+        },
+        "em": {
+         "$ref": "#/$defs/datahora"
+        },
+        "observacao": {
+         "anyOf": [
+          {
+           "type": "string"
+          },
+          {
+           "type": "null"
+          }
+         ]
+        }
+       },
+       "additionalProperties": false,
+       "required": [
+        "revisor",
+        "item_id_vencedor",
+        "em"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "chave_semantica",
+    "item_ids",
+    "descricao",
+    "estado"
+   ]
+  }
+ },
+ "type": "object",
+ "properties": {
+  "$schema": {
+   "type": "string"
+  },
+  "contrato": {
+   "type": "object",
+   "properties": {
+    "nome": {
+     "const": "documento_tecnico"
+    },
+    "versao": {
+     "$ref": "#/$defs/semver"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "nome",
+    "versao"
+   ]
+  },
+  "marcador_exemplo": {
+   "type": "object",
+   "properties": {
+    "ficticio": {
+     "const": true
+    },
+    "aviso": {
+     "type": "string",
+     "minLength": 10
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "ficticio",
+    "aviso"
+   ],
+   "description": "Presente SOMENTE em exemplos/fixtures. Documentos com este marcador são recusados em modo produção."
+  },
+  "projeto": {
+   "type": "object",
+   "properties": {
+    "id": {
+     "$ref": "#/$defs/id"
+    },
+    "nome": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "software_origem": {
+     "type": "object",
+     "properties": {
+      "nome": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "versao": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "fonte": {
+       "enum": [
+        "metadado_do_pdf",
+        "declarado_pela_legna",
+        "inferido",
+        "desconhecido"
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "fonte"
+     ]
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "software_origem"
+   ]
+  },
+  "documento": {
+   "type": "object",
+   "properties": {
+    "arquivo": {
+     "type": "string",
+     "minLength": 1
+    },
+    "sha256": {
+     "$ref": "#/$defs/sha256"
+    },
+    "paginas": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "tamanho_bytes": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "tipo_conteudo": {
+     "enum": [
+      "pdf_vetorial",
+      "pdf_escaneado",
+      "pdf_misto",
+      "imagem"
+     ]
+    },
+    "metadados_pdf": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string"
+     }
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "arquivo",
+    "sha256",
+    "paginas",
+    "tipo_conteudo"
+   ]
+  },
+  "extracao": {
+   "type": "object",
+   "properties": {
+    "gerado_em": {
+     "$ref": "#/$defs/datahora"
+    },
+    "leitor": {
+     "type": "object",
+     "properties": {
+      "nome": {
+       "type": "string",
+       "minLength": 1
+      },
+      "versao": {
+       "type": "string",
+       "minLength": 1
+      },
+      "commit": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "nome",
+      "versao"
+     ]
+    },
+    "algoritmo_cotas": {
+     "type": "object",
+     "properties": {
+      "nome": {
+       "type": "string",
+       "minLength": 1
+      },
+      "sha256": {
+       "$ref": "#/$defs/sha256"
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "nome",
+      "sha256"
+     ]
+    },
+    "parametros": {
+     "type": "object"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "gerado_em",
+    "leitor",
+    "algoritmo_cotas"
+   ]
+  },
+  "paginas": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/pagina"
+   },
+   "minItems": 1
+  },
+  "vistas": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/vista"
+   }
+  },
+  "modulos": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/modulo"
+   }
+  },
+  "itens": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/item"
+   }
+  },
+  "conflitos": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/conflito"
+   }
+  },
+  "pendencias": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/pendencia"
+   }
+  },
+  "elegibilidade": {
+   "type": "object",
+   "properties": {
+    "pronto_para_calculo": {
+     "type": "boolean"
+    },
+    "orcamento_completo": {
+     "type": "boolean"
+    },
+    "bloqueios": {
+     "type": "array",
+     "items": {
+      "$ref": "#/$defs/id"
+     }
+    },
+    "nota": {
+     "type": "string"
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "pronto_para_calculo",
+    "orcamento_completo",
+    "bloqueios"
+   ],
+   "description": "Derivada de `pendencias`. `orcamento_completo` aqui cobre só o lado da leitura; o motor TS ainda soma pendências comerciais (preços/regras não confirmados)."
+  },
+  "resumo": {
+   "type": "object",
+   "properties": {
+    "total_itens": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "por_estado": {
+     "type": "object",
+     "properties": {
+      "extraido": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "geometricamente_consistente": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "conflito": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "sem_medicao": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "pendente_revisao": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "aprovado": {
+       "type": "integer",
+       "minimum": 0
+      }
+     },
+     "additionalProperties": false,
+     "required": [
+      "extraido",
+      "geometricamente_consistente",
+      "conflito",
+      "sem_medicao",
+      "pendente_revisao",
+      "aprovado"
+     ]
+    },
+    "por_tipo": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "integer",
+      "minimum": 0
+     }
+    },
+    "aprovadas_automaticamente": {
+     "const": 0
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "total_itens",
+    "por_estado",
+    "por_tipo",
+    "aprovadas_automaticamente"
+   ]
+  },
+  "integridade": {
+   "type": "object",
+   "properties": {
+    "canonicalizacao": {
+     "const": "json-ordenado-v1"
+    },
+    "hash_conteudo": {
+     "$ref": "#/$defs/sha256"
+    },
+    "escopo": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "gerado_por": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false,
+   "required": [
+    "canonicalizacao",
+    "hash_conteudo",
+    "gerado_por"
+   ],
+   "description": "Detecta alteração após a validação. NÃO prova autoria."
+  },
+  "avisos": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  }
+ },
+ "additionalProperties": false,
+ "required": [
+  "contrato",
+  "projeto",
+  "documento",
+  "extracao",
+  "paginas",
+  "vistas",
+  "modulos",
+  "itens",
+  "conflitos",
+  "pendencias",
+  "elegibilidade",
+  "resumo",
+  "integridade"
+ ],
+ "description": "Contrato documento_tecnico v1: comunicação entre o leitor Python e o motor de cálculo TypeScript."
+}

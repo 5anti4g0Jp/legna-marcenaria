@@ -1,0 +1,493 @@
+{
+ "contrato": "documento_tecnico",
+ "versao_registro": "1.0.0",
+ "descricao": "Campos que o PDF NÃO traz (ou traz só parcialmente) e que dependem de confirmação da Legna. Cada pendência do documento técnico referencia um `id` daqui. `formulario_ref` aponta para o formulário comercial (branch fase2/levantamento-dados): 'Campos:<id>' = campo único; 'tabela:<aba>.<coluna>' = coluna de tabela. Nenhum valor comercial é definido aqui.",
+ "base_inspecao": "1 projeto real (SketchUp LayOut, 34 págs); Promob e AutoCAD NÃO inspecionados.",
+ "campos": [
+  {
+   "id": "esp.corpo",
+   "categoria": "espessuras",
+   "descricao": "Espessura do corpo do módulo (laterais, base, topo)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Nunca declarada; só aparece como cota pequena (15/18/25) entre linhas do desenho.",
+   "formulario_ref": [
+    "Campos:esp.corpo"
+   ]
+  },
+  {
+   "id": "esp.prateleira",
+   "categoria": "espessuras",
+   "descricao": "Espessura da prateleira",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Idem: só cota pequena.",
+   "formulario_ref": [
+    "Campos:esp.prateleira"
+   ]
+  },
+  {
+   "id": "esp.divisoria",
+   "categoria": "espessuras",
+   "descricao": "Espessura da divisória",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Idem.",
+   "formulario_ref": [
+    "Campos:esp.divisoria"
+   ]
+  },
+  {
+   "id": "esp.porta",
+   "categoria": "espessuras",
+   "descricao": "Espessura da porta",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Idem.",
+   "formulario_ref": [
+    "Campos:esp.porta"
+   ]
+  },
+  {
+   "id": "esp.fundo",
+   "categoria": "espessuras",
+   "descricao": "Espessura do fundo",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:esp.fundo"
+   ]
+  },
+  {
+   "id": "esp.gaveta_frente",
+   "categoria": "espessuras",
+   "descricao": "Espessura da frente de gaveta",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:esp.gaveta_frente"
+   ]
+  },
+  {
+   "id": "esp.gaveta_caixa",
+   "categoria": "espessuras",
+   "descricao": "Espessura de lateral/traseira e fundo da caixa da gaveta",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:esp.gaveta_lateral",
+    "Campos:esp.gaveta_fundo"
+   ]
+  },
+  {
+   "id": "esp.painel_ou_tampo",
+   "categoria": "espessuras",
+   "descricao": "Peças de 40/50/100 mm: espessura dobrada/laminada e como é montada",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Cotas 40/50 aparecem; o sistema construtivo não.",
+   "formulario_ref": [
+    "Campos:esp.painel_ou_tampo"
+   ]
+  },
+  {
+   "id": "mat.espessura",
+   "categoria": "espessuras",
+   "descricao": "Espessura de cada chapa de material (item material do documento sem espessura)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Rótulos 'MDF SUGERIDO: TAUARI GUARARAPES' não trazem espessura.",
+   "formulario_ref": [
+    "tabela:materiais.espessura_mm"
+   ]
+  },
+  {
+   "id": "mat.especificacao_confirmada",
+   "categoria": "materiais",
+   "descricao": "Confirmação de que o material 'sugerido' é o material a comprar (marca/linha/cor/acabamento)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Rotulado 'MDF SUGERIDO' em 33 textos: sugestão do projetista, não especificação firme.",
+   "formulario_ref": [
+    "tabela:materiais.tipo",
+    "tabela:materiais.fabricante_linha",
+    "tabela:materiais.cor_acabamento"
+   ]
+  },
+  {
+   "id": "mat.chapa_comercial",
+   "categoria": "materiais",
+   "descricao": "Dimensões da chapa comercial usada",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:materiais.largura_chapa_mm",
+    "tabela:materiais.comprimento_chapa_mm"
+   ]
+  },
+  {
+   "id": "mat.superficie_aplicacao",
+   "categoria": "materiais",
+   "descricao": "Qual material vai em qual peça/superfície",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Só no render (cor das superfícies); o texto lista apenas as amostras.",
+   "formulario_ref": [],
+   "lacuna_formulario": "Sem campo no formulário: é decisão por módulo, resolvida na revisão humana do documento."
+  },
+  {
+   "id": "ferr.dobradica",
+   "categoria": "ferragens",
+   "descricao": "Dobradiças: modelo e quantidade por porta (por faixa de altura)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.dobradicas_regra",
+    "tabela:regra_dobradica.altura_ate_mm",
+    "tabela:regra_dobradica.qtd_por_porta",
+    "tabela:ferragens.descricao"
+   ]
+  },
+  {
+   "id": "ferr.corredica",
+   "categoria": "ferragens",
+   "descricao": "Corrediças: modelo, comprimentos e regra de escolha",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.corredica_regra",
+    "tabela:regra_corredica.comprimento_mm",
+    "tabela:ferragens.descricao"
+   ]
+  },
+  {
+   "id": "ferr.puxador_qtd",
+   "categoria": "ferragens",
+   "descricao": "Puxadores: quantidade por porta/gaveta e posição",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "O modelo do puxador aparece em texto; a quantidade por peça não.",
+   "formulario_ref": [
+    "Campos:fab.puxador_regra"
+   ]
+  },
+  {
+   "id": "ferr.pino_prateleira",
+   "categoria": "ferragens",
+   "descricao": "Pinos de prateleira regulável por prateleira",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.pinos_prateleira"
+   ]
+  },
+  {
+   "id": "fita.bordas_por_peca",
+   "categoria": "fitas de borda",
+   "descricao": "Quais bordas levam fita, por tipo de peça",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.fita_bordas"
+   ]
+  },
+  {
+   "id": "fita.especificacao",
+   "categoria": "fitas de borda",
+   "descricao": "Fita: cor/acabamento, largura, espessura e unidade de venda",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:fitas.cor_acabamento",
+    "tabela:fitas.largura_mm",
+    "tabela:fitas.espessura_mm",
+    "tabela:fitas.unidade_venda"
+   ]
+  },
+  {
+   "id": "fita.desperdicio",
+   "categoria": "fitas de borda",
+   "descricao": "Desperdício de fita na compra",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.fita_desperdicio"
+   ]
+  },
+  {
+   "id": "acess.parafusos_cavilhas",
+   "categoria": "parafusos e acessórios",
+   "descricao": "Parafusos, cavilhas, minifix e demais fixações: tipo e quantidade por módulo",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [],
+   "lacuna_formulario": "LACUNA: o formulário atual não pergunta regra de parafusos/fixações (só a tabela 'ferragens' genérica). Incluir campo antes de enviar à Legna."
+  },
+  {
+   "id": "acess.led_perfil_comprimento",
+   "categoria": "parafusos e acessórios",
+   "descricao": "Fita/perfil de LED: comprimento e fonte (potência 10W/m está no PDF; comprimento não)",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Especificação (W/m, K, perfil 12 mm) aparece; o comprimento não.",
+   "formulario_ref": [
+    "tabela:terceirizados.descricao"
+   ]
+  },
+  {
+   "id": "acess.outros_terceiros",
+   "categoria": "parafusos e acessórios",
+   "descricao": "Vidro, espelho, palhinha, spots, calha, pezinho: quantidade/medida de cada",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Nomes e algumas quantidades ('10 UNIDADES') aparecem; medidas e áreas não.",
+   "formulario_ref": [
+    "tabela:terceirizados.descricao",
+    "tabela:terceirizados.unidade"
+   ]
+  },
+  {
+   "id": "fab.fundo",
+   "categoria": "regras de fabricação",
+   "descricao": "Fundo: fixação, descontos de largura/altura e emenda quando maior que a chapa",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fol.fundo_encaixe",
+    "Campos:fab.fundo_divisao"
+   ]
+  },
+  {
+   "id": "fab.rodape",
+   "categoria": "regras de fabricação",
+   "descricao": "Rodapé/rodabase: construção (nota do PDF diz que é feito na marcenaria)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Nota 'Confeccionar rodabase...' aparece; altura/estrutura não.",
+   "formulario_ref": [
+    "Campos:fol.rodape_regra"
+   ]
+  },
+  {
+   "id": "fab.veio",
+   "categoria": "regras de fabricação",
+   "descricao": "Peças com veio: sentido e se o corte pode girar",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:cor.respeita_veio"
+   ]
+  },
+  {
+   "id": "fab.usinagens",
+   "categoria": "regras de fabricação",
+   "descricao": "Usinagens especiais (CNC, rebaixos, ripado, canelado) e cobrança",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Menções visuais/notas ('rebaixo de 2 cm', ripado) sem regra de custo.",
+   "formulario_ref": [
+    "Campos:fab.usinagens"
+   ]
+  },
+  {
+   "id": "fab.montagem_local",
+   "categoria": "regras de fabricação",
+   "descricao": "O que é montado na marcenaria e o que no cliente",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fab.montagem_local"
+   ]
+  },
+  {
+   "id": "cor.serra_refilo",
+   "categoria": "regras de fabricação",
+   "descricao": "Espessura de serra, refilo e sobra mínima reaproveitável",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:cor.espessura_serra",
+    "Campos:cor.refilo",
+    "Campos:cor.sobra_minima"
+   ]
+  },
+  {
+   "id": "fol.porta",
+   "categoria": "folgas e tolerâncias",
+   "descricao": "Folgas de porta (lateral, topo/base, entre portas) e tipo de aplicação",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fol.porta_lateral",
+    "Campos:fol.porta_topo_base",
+    "Campos:fol.porta_entre",
+    "Campos:fol.porta_sobreposicao"
+   ]
+  },
+  {
+   "id": "fol.prateleira",
+   "categoria": "folgas e tolerâncias",
+   "descricao": "Recuo e folga lateral de prateleira",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fol.prateleira_recuo",
+    "Campos:fol.prateleira_folga_lateral"
+   ]
+  },
+  {
+   "id": "fol.gaveta",
+   "categoria": "folgas e tolerâncias",
+   "descricao": "Folgas e regra de altura/profundidade da caixa de gaveta",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:fol.gaveta_lateral",
+    "Campos:fol.gaveta_altura",
+    "Campos:fol.gaveta_profundidade"
+   ]
+  },
+  {
+   "id": "tol.corte",
+   "categoria": "folgas e tolerâncias",
+   "descricao": "Tolerância de corte aceita",
+   "bloqueia": "nenhum",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:cor.tolerancia_corte"
+   ]
+  },
+  {
+   "id": "tol.orcamento",
+   "categoria": "folgas e tolerâncias",
+   "descricao": "Diferença máxima aceitável entre orçamento e consumo real (critério de aceite)",
+   "bloqueia": "nenhum",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:prec.tolerancia_orcamento"
+   ]
+  },
+  {
+   "id": "preco.chapa",
+   "categoria": "preços e fornecedores",
+   "descricao": "Preço por chapa, fornecedor e data",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:materiais.preco_chapa",
+    "tabela:materiais.fornecedor",
+    "tabela:materiais.data_preco"
+   ]
+  },
+  {
+   "id": "preco.fita",
+   "categoria": "preços e fornecedores",
+   "descricao": "Preço da fita, fornecedor e data",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:fitas.preco_unitario",
+    "tabela:fitas.fornecedor",
+    "tabela:fitas.data_preco"
+   ]
+  },
+  {
+   "id": "preco.ferragem",
+   "categoria": "preços e fornecedores",
+   "descricao": "Preço de ferragens, fornecedor e data",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:ferragens.preco_unitario",
+    "tabela:ferragens.fornecedor",
+    "tabela:ferragens.data_preco"
+   ]
+  },
+  {
+   "id": "preco.terceirizado",
+   "categoria": "preços e fornecedores",
+   "descricao": "Preço de itens de terceiros (vidro, espelho, LED...)",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:terceirizados.preco_unitario",
+    "tabela:terceirizados.fornecedor",
+    "tabela:terceirizados.data_preco"
+   ]
+  },
+  {
+   "id": "forn.cadastro",
+   "categoria": "preços e fornecedores",
+   "descricao": "Cadastro de fornecedores (prazo, pedido mínimo)",
+   "bloqueia": "nenhum",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "tabela:fornecedores.nome"
+   ]
+  },
+  {
+   "id": "mo.custos",
+   "categoria": "preços e fornecedores",
+   "descricao": "Mão de obra, custos indiretos e margem",
+   "bloqueia": "orcamento",
+   "ausente_no_pdf": "nunca_aparece",
+   "evidencia_inspecao": "Zero ocorrências no PDF inspecionado (SketchUp LayOut, 34 págs).",
+   "formulario_ref": [
+    "Campos:mo.criterio",
+    "Campos:mo.valor",
+    "Campos:mo.base_calculo",
+    "Campos:fin.indiretos_pct",
+    "Campos:fin.margem_pct"
+   ]
+  },
+  {
+   "id": "doc.unidade_desenho",
+   "categoria": "documento",
+   "descricao": "Unidade das cotas do desenho (a declaração 'COTAS EM MILÍMETROS' existe em só 5 de 34 páginas)",
+   "bloqueia": "calculo",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "Declarada em 5 págs; notas de profundidade vêm em cm.",
+   "formulario_ref": [
+    "Campos:emp.unidade_desenho",
+    "Campos:emp.convencao_cotas"
+   ]
+  },
+  {
+   "id": "doc.software_origem",
+   "categoria": "documento",
+   "descricao": "Software e versão que geraram o PDF e como foi exportado",
+   "bloqueia": "nenhum",
+   "ausente_no_pdf": "aparece_parcialmente",
+   "evidencia_inspecao": "O metadado 'creator' traz o software em PDFs digitais; a versão de exportação e as opções não.",
+   "formulario_ref": [
+    "Campos:emp.softwares",
+    "Campos:emp.exporta_texto_como_texto"
+   ]
+  }
+ ]
+}

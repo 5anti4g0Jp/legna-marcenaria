@@ -1,0 +1,1350 @@
+{
+ "contrato": {
+  "nome": "documento_tecnico",
+  "versao": "1.0.0"
+ },
+ "marcador_exemplo": {
+  "ficticio": true,
+  "aviso": "EXEMPLO FICTÍCIO: todos os dados, nomes, hashes e revisores são inventados para ilustrar o contrato. Não representa nenhum projeto real."
+ },
+ "projeto": {
+  "id": "exemplo-ficticio-0001",
+  "nome": "PROJETO EXEMPLO (FICTÍCIO)",
+  "software_origem": {
+   "nome": "Software Exemplo (fictício)",
+   "versao": null,
+   "fonte": "desconhecido"
+  }
+ },
+ "documento": {
+  "arquivo": "projeto_exemplo_ficticio.pdf",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000001",
+  "paginas": 2,
+  "tamanho_bytes": 1000,
+  "tipo_conteudo": "pdf_misto",
+  "metadados_pdf": {
+   "creator": "Software Exemplo (fictício)"
+  }
+ },
+ "extracao": {
+  "gerado_em": "2026-11-17T12:00:00+00:00",
+  "leitor": {
+   "nome": "leitor-exemplo",
+   "versao": "0.0.0-exemplo",
+   "commit": null
+  },
+  "algoritmo_cotas": {
+   "nome": "algoritmo-exemplo",
+   "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "parametros": {}
+ },
+ "paginas": [
+  {
+   "numero": 1,
+   "largura_pt": 1191,
+   "altura_pt": 842,
+   "rotacao": 0,
+   "tipo": "desenho_tecnico",
+   "origem_texto": "camada_texto",
+   "n_vetores": 120,
+   "n_imagens": 0,
+   "titulo_detectado": "MÓDULO EXEMPLO",
+   "unidade_declarada": "mm",
+   "unidade_declarada_item_id": "i.decl_unidade",
+   "par_de": [
+    2
+   ]
+  },
+  {
+   "numero": 2,
+   "largura_pt": 1191,
+   "altura_pt": 842,
+   "rotacao": 0,
+   "tipo": "ficha",
+   "origem_texto": "mista",
+   "n_vetores": 1,
+   "n_imagens": 3,
+   "titulo_detectado": "MÓDULO EXEMPLO",
+   "unidade_declarada": null,
+   "unidade_declarada_item_id": null,
+   "par_de": [
+    1
+   ]
+  }
+ ],
+ "vistas": [
+  {
+   "id": "v1",
+   "pagina": 1,
+   "tipo": "indeterminado",
+   "nome": null,
+   "bbox": null,
+   "escala_mm_por_pt": null,
+   "estado": "extraido",
+   "evidencias": []
+  },
+  {
+   "id": "v2",
+   "pagina": 2,
+   "tipo": "indeterminado",
+   "nome": null,
+   "bbox": null,
+   "escala_mm_por_pt": null,
+   "estado": "extraido",
+   "evidencias": []
+  }
+ ],
+ "modulos": [
+  {
+   "id": "m1",
+   "nome": "MÓDULO EXEMPLO",
+   "paginas": [
+    1,
+    2
+   ],
+   "vista_ids": [
+    "v1",
+    "v2"
+   ],
+   "item_ids": [
+    "i.decl_unidade",
+    "i.cota_largura",
+    "i.cota_altura",
+    "i.cota_pequena",
+    "i.nota_prof_a",
+    "i.nota_prof_b",
+    "i.cota_ocr",
+    "i.rotulo_porta",
+    "i.rotulo_gaveta",
+    "i.material",
+    "i.puxador",
+    "i.qtd_texto",
+    "i.qtd_gavetas"
+   ],
+   "dimensoes": {
+    "largura_item_id": "i.cota_largura",
+    "altura_item_id": "i.cota_altura",
+    "profundidade_item_id": null
+   },
+   "origem": "rotulo_do_documento",
+   "estado": "extraido"
+  }
+ ],
+ "itens": [
+  {
+   "id": "i.decl_unidade",
+   "tipo": "declaracao_unidade",
+   "pagina": 1,
+   "coords": [
+    60,
+    780,
+    300,
+    794
+   ],
+   "texto_original": "COTAS EM MILÍMETROS",
+   "valor": {
+    "numero": null,
+    "texto": "mm",
+    "unidade": "mm",
+    "unidade_fonte": "declarada_no_item"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {},
+   "relacoes": [],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'COTAS EM MILÍMETROS' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      60,
+      780,
+      300,
+      794
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.cota_largura",
+   "tipo": "cota",
+   "pagina": 1,
+   "coords": [
+    400,
+    100,
+    425,
+    114
+   ],
+   "texto_original": "800",
+   "valor": {
+    "numero": 800,
+    "texto": null,
+    "unidade": "mm",
+    "unidade_fonte": "declarada_na_pagina"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": "modulo:m1.largura",
+   "atributos": {},
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    },
+    {
+     "tipo": "aparece_na_vista",
+     "alvo_id": "v1"
+    }
+   ],
+   "analise_automatica": {
+    "estado": "geometricamente_consistente",
+    "estado_algoritmo": "confirmado",
+    "algoritmo_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+   },
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto '800'",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      400,
+      100,
+      425,
+      114
+     ]
+    },
+    {
+     "tipo": "geometria",
+     "descricao": "intervalo medido entre as marcas coincide com 800 mm",
+     "metodo": "ingest.dimensions",
+     "dados": {
+      "escala_mm_por_pt": 2.0
+     },
+     "pagina": 1,
+     "coords": [
+      200,
+      108,
+      600,
+      112
+     ]
+    },
+    {
+     "tipo": "revisao_humana",
+     "descricao": "aprovação humana (exemplo)",
+     "metodo": "revisao_humana",
+     "dados": {
+      "revisor": "Revisor Exemplo (FICTÍCIO)"
+     },
+     "pagina": null,
+     "coords": null
+    }
+   ],
+   "conflitos": [],
+   "estado": "aprovado",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "geometricamente_consistente",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "geometria não contradiz o valor"
+    },
+    {
+     "de": "geometricamente_consistente",
+     "para": "pendente_revisao",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "enfileirada para revisão humana"
+    },
+    {
+     "de": "pendente_revisao",
+     "para": "aprovado",
+     "ator": {
+      "tipo": "humano",
+      "id": "Revisor Exemplo (FICTÍCIO)"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "conferido no desenho"
+    }
+   ],
+   "revisao": {
+    "revisor": "Revisor Exemplo (FICTÍCIO)",
+    "decisao": "aprovado",
+    "em": "2026-11-17T12:00:00+00:00",
+    "observacao": "conferido no desenho (exemplo fictício)",
+    "valor_confirmado": null
+   }
+  },
+  {
+   "id": "i.cota_altura",
+   "tipo": "cota",
+   "pagina": 1,
+   "coords": [
+    620,
+    400,
+    634,
+    425
+   ],
+   "texto_original": "701",
+   "valor": {
+    "numero": 700,
+    "texto": null,
+    "unidade": "mm",
+    "unidade_fonte": "declarada_na_pagina"
+   },
+   "orientacao": "vertical",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": "modulo:m1.altura",
+   "atributos": {},
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": {
+    "estado": "geometricamente_consistente",
+    "estado_algoritmo": "confirmado",
+    "algoritmo_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+   },
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto '700'",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      620,
+      400,
+      634,
+      425
+     ]
+    },
+    {
+     "tipo": "geometria",
+     "descricao": "intervalo medido coincide com 700 mm",
+     "metodo": "ingest.dimensions",
+     "dados": {
+      "escala_mm_por_pt": 2.0
+     },
+     "pagina": 1,
+     "coords": [
+      626,
+      300,
+      630,
+      650
+     ]
+    },
+    {
+     "tipo": "revisao_humana",
+     "descricao": "aprovação humana (exemplo)",
+     "metodo": "revisao_humana",
+     "dados": {
+      "revisor": "Revisor Exemplo (FICTÍCIO)"
+     },
+     "pagina": null,
+     "coords": null
+    }
+   ],
+   "conflitos": [],
+   "estado": "aprovado",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "geometricamente_consistente",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "geometria não contradiz o valor"
+    },
+    {
+     "de": "geometricamente_consistente",
+     "para": "pendente_revisao",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "enfileirada para revisão humana"
+    },
+    {
+     "de": "pendente_revisao",
+     "para": "aprovado",
+     "ator": {
+      "tipo": "humano",
+      "id": "Revisor Exemplo (FICTÍCIO)"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "conferido no desenho"
+    }
+   ],
+   "revisao": {
+    "revisor": "Revisor Exemplo (FICTÍCIO)",
+    "decisao": "aprovado",
+    "em": "2026-11-17T12:00:00+00:00",
+    "observacao": "conferido no desenho (exemplo fictício)",
+    "valor_confirmado": null
+   }
+  },
+  {
+   "id": "i.cota_pequena",
+   "tipo": "cota",
+   "pagina": 1,
+   "coords": [
+    210,
+    300,
+    224,
+    314
+   ],
+   "texto_original": "15",
+   "valor": {
+    "numero": 15,
+    "texto": null,
+    "unidade": "mm",
+    "unidade_fonte": "declarada_na_pagina"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {},
+   "relacoes": [],
+   "analise_automatica": {
+    "estado": "sem_medicao",
+    "estado_algoritmo": "sem_medicao",
+    "algoritmo_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+   },
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto '15'",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      210,
+      300,
+      224,
+      314
+     ]
+    },
+    {
+     "tipo": "sem_medicao",
+     "descricao": "sem linha de cota associável",
+     "metodo": "ingest.dimensions",
+     "dados": {},
+     "pagina": 1,
+     "coords": null
+    }
+   ],
+   "conflitos": [],
+   "estado": "sem_medicao",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "sem_medicao",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "texto fora dos riscos: não foi possível medir"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.nota_prof_a",
+   "tipo": "nota",
+   "pagina": 1,
+   "coords": [
+    700,
+    60,
+    900,
+    74
+   ],
+   "texto_original": "PROFUNDIDADE = 56 CM",
+   "valor": {
+    "numero": 56,
+    "texto": null,
+    "unidade": "cm",
+    "unidade_fonte": "declarada_no_item"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": "modulo:m1.profundidade",
+   "atributos": {},
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'PROFUNDIDADE = 56 CM' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      700,
+      60,
+      900,
+      74
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "conflito",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "conflito",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "outra página diz 58 cm para a mesma entidade"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.nota_prof_b",
+   "tipo": "nota",
+   "pagina": 2,
+   "coords": [
+    100,
+    60,
+    300,
+    74
+   ],
+   "texto_original": "PROFUNDIDADE = 58 CM",
+   "valor": {
+    "numero": 58,
+    "texto": null,
+    "unidade": "cm",
+    "unidade_fonte": "declarada_no_item"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": "modulo:m1.profundidade",
+   "atributos": {},
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'PROFUNDIDADE = 58 CM' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 2,
+     "coords": [
+      100,
+      60,
+      300,
+      74
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "conflito",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "conflito",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "outra página diz 56 cm para a mesma entidade"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.cota_ocr",
+   "tipo": "cota",
+   "pagina": 2,
+   "coords": [
+    500,
+    500,
+    525,
+    514
+   ],
+   "texto_original": "450",
+   "valor": {
+    "numero": 450,
+    "texto": null,
+    "unidade": null,
+    "unidade_fonte": "desconhecida"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "ocr",
+    "ocr": {
+     "motor": "ocr-exemplo",
+     "versao": null,
+     "confianca": 0.62
+    }
+   },
+   "confianca": 0.62,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {},
+   "relacoes": [],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "ocr",
+     "descricao": "número lido por OCR em região raster",
+     "metodo": "ocr",
+     "dados": {
+      "confianca": 0.62
+     },
+     "pagina": 2,
+     "coords": [
+      500,
+      500,
+      525,
+      514
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.rotulo_porta",
+   "tipo": "rotulo_componente",
+   "pagina": 1,
+   "coords": [
+    300,
+    200,
+    340,
+    212
+   ],
+   "texto_original": "PORTA",
+   "valor": {
+    "numero": null,
+    "texto": "PORTA",
+    "unidade": null,
+    "unidade_fonte": "nao_se_aplica"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {
+    "categoria": "porta"
+   },
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'PORTA' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      300,
+      200,
+      340,
+      212
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.rotulo_gaveta",
+   "tipo": "rotulo_componente",
+   "pagina": 1,
+   "coords": [
+    300,
+    500,
+    350,
+    512
+   ],
+   "texto_original": "GAVETA",
+   "valor": {
+    "numero": null,
+    "texto": "GAVETA",
+    "unidade": null,
+    "unidade_fonte": "nao_se_aplica"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {
+    "categoria": "gaveta"
+   },
+   "relacoes": [
+    {
+     "tipo": "pertence_ao_modulo",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'GAVETA' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 1,
+     "coords": [
+      300,
+      500,
+      350,
+      512
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.material",
+   "tipo": "material",
+   "pagina": 2,
+   "coords": [
+    900,
+    200,
+    1100,
+    214
+   ],
+   "texto_original": "MDF EXEMPLO SUGERIDO",
+   "valor": {
+    "numero": null,
+    "texto": "MDF EXEMPLO SUGERIDO",
+    "unidade": null,
+    "unidade_fonte": "nao_se_aplica"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "sugerida",
+   "chave_semantica": null,
+   "atributos": {
+    "espessura_mm": null,
+    "acabamento": null,
+    "marca_linha": null
+   },
+   "relacoes": [
+    {
+     "tipo": "descreve",
+     "alvo_id": "m1"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'MDF EXEMPLO SUGERIDO' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 2,
+     "coords": [
+      900,
+      200,
+      1100,
+      214
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.puxador",
+   "tipo": "ferragem",
+   "pagina": 2,
+   "coords": [
+    900,
+    700,
+    1150,
+    714
+   ],
+   "texto_original": "Puxador Exemplo FICTÍCIO 25mm",
+   "valor": {
+    "numero": null,
+    "texto": "Puxador Exemplo FICTÍCIO 25mm",
+    "unidade": null,
+    "unidade_fonte": "nao_se_aplica"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {
+    "modelo": "Puxador Exemplo FICTÍCIO",
+    "quantidade_item_id": "i.qtd_texto"
+   },
+   "relacoes": [],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto 'Puxador Exemplo FICTÍCIO 25mm' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 2,
+     "coords": [
+      900,
+      700,
+      1150,
+      714
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.qtd_texto",
+   "tipo": "quantidade",
+   "pagina": 2,
+   "coords": [
+    900,
+    720,
+    1000,
+    734
+   ],
+   "texto_original": "2 UNIDADES",
+   "valor": {
+    "numero": 2,
+    "texto": null,
+    "unidade": "un",
+    "unidade_fonte": "declarada_no_item"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "camada_texto",
+    "ocr": null
+   },
+   "confianca": 0.99,
+   "natureza": "explicita",
+   "chave_semantica": null,
+   "atributos": {},
+   "relacoes": [
+    {
+     "tipo": "quantidade_de",
+     "alvo_id": "i.puxador"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "leitura",
+     "descricao": "texto '2 UNIDADES' na camada de texto",
+     "metodo": "camada_texto",
+     "dados": {},
+     "pagina": 2,
+     "coords": [
+      900,
+      720,
+      1000,
+      734
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "extraido",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    }
+   ],
+   "revisao": null
+  },
+  {
+   "id": "i.qtd_gavetas",
+   "tipo": "quantidade",
+   "pagina": 1,
+   "coords": [
+    300,
+    500,
+    350,
+    700
+   ],
+   "texto_original": "(3 gavetas contadas no desenho)",
+   "valor": {
+    "numero": 3,
+    "texto": null,
+    "unidade": "un",
+    "unidade_fonte": "nao_se_aplica"
+   },
+   "orientacao": "horizontal",
+   "angulo_graus": 0,
+   "origem": {
+    "metodo_extracao": "inferencia_geometrica",
+    "ocr": null
+   },
+   "confianca": 0.7,
+   "natureza": "inferida",
+   "chave_semantica": null,
+   "atributos": {
+    "categoria": "gaveta",
+    "quantidade": 3
+   },
+   "relacoes": [
+    {
+     "tipo": "quantidade_de",
+     "alvo_id": "i.rotulo_gaveta"
+    }
+   ],
+   "analise_automatica": null,
+   "evidencias": [
+    {
+     "tipo": "quantidade_inferida",
+     "descricao": "3 retângulos de gaveta empilhados entre as marcas",
+     "metodo": "contagem_geometrica",
+     "dados": {
+      "retangulos": 3
+     },
+     "pagina": 1,
+     "coords": [
+      300,
+      500,
+      350,
+      700
+     ]
+    }
+   ],
+   "conflitos": [],
+   "estado": "pendente_revisao",
+   "historico": [
+    {
+     "de": null,
+     "para": "extraido",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "lido da camada de texto"
+    },
+    {
+     "de": "extraido",
+     "para": "pendente_revisao",
+     "ator": {
+      "tipo": "sistema",
+      "id": "leitor-exemplo"
+     },
+     "em": "2026-11-17T12:00:00+00:00",
+     "motivo": "quantidade inferida: exige revisão humana"
+    }
+   ],
+   "revisao": null
+  }
+ ],
+ "conflitos": [
+  {
+   "id": "cf.prof",
+   "chave_semantica": "modulo:m1.profundidade",
+   "item_ids": [
+    "i.nota_prof_a",
+    "i.nota_prof_b"
+   ],
+   "descricao": "56 cm (p1) x 58 cm (p2)",
+   "estado": "aberto",
+   "resolucao": null
+  }
+ ],
+ "pendencias": [
+  {
+   "id": "pd.esp_material",
+   "campo_legna": "mat.espessura",
+   "tipo": "ausente_no_pdf",
+   "descricao": "O material não traz espessura: depende da Legna.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.material"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  },
+  {
+   "id": "pd.mat_conf",
+   "campo_legna": "mat.especificacao_confirmada",
+   "tipo": "sugerido_sem_confirmacao",
+   "descricao": "Material marcado como SUGERIDO: confirmar marca/linha/cor.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.material"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  },
+  {
+   "id": "pd.dobradica",
+   "campo_legna": "ferr.dobradica",
+   "tipo": "ausente_no_pdf",
+   "descricao": "Porta sem dobradiça documentada.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.rotulo_porta"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  },
+  {
+   "id": "pd.corredica",
+   "campo_legna": "ferr.corredica",
+   "tipo": "ausente_no_pdf",
+   "descricao": "Gaveta sem corrediça documentada.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.rotulo_gaveta"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  },
+  {
+   "id": "pd.puxador_qtd",
+   "campo_legna": "ferr.puxador_qtd",
+   "tipo": "nao_confirmado",
+   "descricao": "Quantidade de puxadores só como nota ('2 UNIDADES'), não confirmada.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.puxador",
+    "i.qtd_texto"
+   ],
+   "modulo_id": null,
+   "pagina": null
+  },
+  {
+   "id": "pd.unidade_p2",
+   "campo_legna": "doc.unidade_desenho",
+   "tipo": "unidade_nao_declarada",
+   "descricao": "Página 2 tem cotas e não declara a unidade.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.cota_ocr"
+   ],
+   "modulo_id": null,
+   "pagina": 2
+  },
+  {
+   "id": "pd.ocr",
+   "campo_legna": null,
+   "tipo": "ocr_sem_revisao",
+   "descricao": "Cota lida por OCR: exige revisão humana.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.cota_ocr"
+   ],
+   "modulo_id": null,
+   "pagina": null
+  },
+  {
+   "id": "pd.inferido",
+   "campo_legna": null,
+   "tipo": "inferido_sem_revisao",
+   "descricao": "Quantidade de gavetas inferida pela geometria: exige revisão humana.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.qtd_gavetas"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  },
+  {
+   "id": "pd.conflito_prof",
+   "campo_legna": null,
+   "tipo": "conflito",
+   "descricao": "Profundidade 56 cm (p1) x 58 cm (p2) para o mesmo módulo.",
+   "bloqueia": "calculo",
+   "item_ids": [
+    "i.nota_prof_a",
+    "i.nota_prof_b"
+   ],
+   "modulo_id": "m1",
+   "pagina": null
+  }
+ ],
+ "elegibilidade": {
+  "pronto_para_calculo": false,
+  "orcamento_completo": false,
+  "bloqueios": [
+   "pd.esp_material",
+   "pd.mat_conf",
+   "pd.dobradica",
+   "pd.corredica",
+   "pd.puxador_qtd",
+   "pd.unidade_p2",
+   "pd.ocr",
+   "pd.inferido",
+   "pd.conflito_prof"
+  ],
+  "nota": "Exemplo: não pronto. Há pendências que bloqueiam o cálculo."
+ },
+ "resumo": {
+  "total_itens": 13,
+  "por_estado": {
+   "extraido": 7,
+   "geometricamente_consistente": 0,
+   "conflito": 2,
+   "sem_medicao": 1,
+   "pendente_revisao": 1,
+   "aprovado": 2
+  },
+  "por_tipo": {
+   "declaracao_unidade": 1,
+   "cota": 4,
+   "nota": 2,
+   "rotulo_componente": 2,
+   "material": 1,
+   "ferragem": 1,
+   "quantidade": 2
+  },
+  "aprovadas_automaticamente": 0
+ },
+ "integridade": {
+  "canonicalizacao": "json-ordenado-v1",
+  "escopo": [
+   "projeto",
+   "documento",
+   "extracao",
+   "paginas",
+   "vistas",
+   "modulos",
+   "itens",
+   "conflitos",
+   "pendencias"
+  ],
+  "hash_conteudo": "9d3b2626bc9305d5d5a3c4e498878b3525ccc3f690d6a351a6e7f274a1fe3de8",
+  "gerado_por": "gen_exemplo (fictício)"
+ },
+ "avisos": [
+  "EXEMPLO FICTÍCIO"
+ ]
+}
